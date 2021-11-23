@@ -12,9 +12,18 @@ this project is cross-platform Math online judge system. you can provide a math 
 - this system also provide math online Competition system. end-user can compete each other on the web whenever a predetermined time by root
 - A user authorized by super root can develop problems.
 
+## How To install?
+
+download this project and unzip
+
+1. npm install
+2. npm start
+
+open webBrowser and go localhost:3000
+
 ## The Repository
 
-This repository("RedPen") is where we(OSS team 5) develop the RedOen product together with the community. Not only do we work on code and issues here, we also publish our [plans](https://github.com/OSLgroup5/RedPen/wiki/Our-Plans) This source code is available to everyone under the standard [MIT LICENSE](https://github.com/OSLgroup5/RedPen/blob/main/LICENSE.md)
+This repository("RedPen") is where we(OSS team 5) develop the RedPen product together with the community. Not only do we work on code and issues here, we also publish our [plans](https://github.com/OSLgroup5/RedPen/wiki/Our-Plans) This source code is available to everyone under the standard [MIT LICENSE](https://github.com/OSLgroup5/RedPen/blob/main/LICENSE.md)
 
 ## Contributing
 
