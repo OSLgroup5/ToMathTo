@@ -9,9 +9,15 @@ var usersRouter = require('./routes/users');
 
 var consolidate = require('consolidate');
 
+var session = require('express-session');
 
 var app = express();
 
+app.use(session({
+    secret: 'OSS_team_5_number_one',
+    resave: false,
+    saveUninitialized: true,
+}));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 
