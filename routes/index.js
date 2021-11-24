@@ -39,7 +39,7 @@ router.get('/logined', (req, res, next) => {
         res.redirect('/');
     }
     else {
-        console.log(req.session);
+        // console.log(req.session);
         res.render('logined', { session: req.session });
     }
 });
@@ -64,24 +64,127 @@ router.post('/submitAnswer', (req, res, next)=>
     }
     else
     {
+        
         res.send("correct");
+    }
+});
+router.get('/getDescription', (req, res, next)=>
+{
+    let probNum = req.query.probNum;
+    console.log(probNum);
+    
+    // console.log(req);
+    if (! (probNum in probSet) )
+    {
+        res.send("incorrect problem number");
+    }
+    else
+    {
+        res.send(probSet[probNum].description);
+        // res.write
     }
 });
 
 router.get('/problem', (req, res, next) => {
-    console.log(req.session);
-
+    // console.log(req.session);
+    // console.log("problem reqest inputed");
     if (!req.session.logined) {
         res.redirect('/');
     }
     else {
-        res.render("problem");
-        return;
+        let probNum = req.query.probNum;
+        let probName = probSet[probNum].name;
+        let probDesc = probSet[probNum].description;
+        console.log(probNum);
+        // console.log(probDesc);
+        // res.render("problem");
+        // return;
         ///////////////////////
         // console.log(req.query.probNum);
         // res.render('problem');
-        var output = ``;
-            res.send(output);
+        var output = `<!doctype html>
+        <html lang="en">
+        
+        <head>
+            <!-- Required meta tags -->
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+            <!-- Bootstrap CSS -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+                integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        
+            <title>Problem  ${probName}</title>
+        </head>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+
+        <body>
+            <h1>Problem  ${probNum}</h1>
+            <p id="desc">
+                
+            </p>
+            <button type="button" class="btn btn-outline-primary" id="goToList">goToList!</button>
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text">answer: </span>
+                <input type="text" class="form-control" placeholder="answer the question" id="answer">
+            </div>
+            <button type="button" class="btn btn-outline-primary" id="submit">Submit!</button>
+            <div id="result">
+        
+            </div>
+        
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                crossorigin="anonymous"></script>
+        </body>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script>
+            window.onload = ()=>
+            {
+                $.ajax({
+                    url:"/getDescription",
+                    type:"get",
+                    data: {probNum:"${probNum}"},
+                    success:(data)=>{document.querySelector("#desc").innerHTML=data;}
+                });
+                
+            };
+            document.querySelector('#submit').addEventListener("click", ()=>
+            {
+                $.ajax({
+                    url: "/submitAnswer", 
+                    type: "post",
+                    data: {answer: document.querySelector("#answer").value, probNum: ${probNum}},
+                    success:(data)=>
+                    {
+                        if (data === "correct")
+                        {
+                            let x = document.querySelector("#result");
+                            x.innerHTML = '<div class="badge bg-primary text-wrap" style="width: 6rem;"> Success! </div>';
+                        }
+                        else
+                        {
+                            x.innerHTML = '<div class="badge bg-primary text-wrap" style="width: 6rem;"> Wrong! </div>';
+                        }
+                    }
+                });
+            });
+        
+            document.querySelector("#goToList").addEventListener("click",()=>
+            {
+                console.log("clicked!");
+                window.location.href = "/logined";
+            });
+        </script>
+        
+        </html>`;
+
+        res.send(output);
     }
 });
 module.exports = router;
