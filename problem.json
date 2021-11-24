@@ -1,4 +1,0 @@
-{
-    "1":{"name":"solve it","description":"this is true. answer yes or no", "answer":"yes"},
-    "2":{"name":"solve it but hard","description":"$n^2$this is false. answer yes or no", "answer":"yes"}
-}

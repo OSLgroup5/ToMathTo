@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test for data sets</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <div></div>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+
+    <script>
+      let div = document.querySelector("div");
+      let requestURL =
+        "https://raw.githubusercontent.com/sONg20NOW/temp/problems/problems.txt";
+
+      let request = new XMLHttpRequest();
+
+      request.open("GET", requestURL);
+      request.responseType = "text";
+      request.send();
+
+      request.onload = function () {
+        let prosJsonText = request.response;
+        let prosJson = JSON.parse(prosJsonText);
+        let text = prosJson["3"]["description"];
+
+        let pro1 = document.createElement("p");
+        pro1.innerHTML = text;
+        div.appendChild(pro1);
+      };
+    </script>
+  </body>
+</html>
