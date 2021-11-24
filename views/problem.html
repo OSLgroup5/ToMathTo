@@ -12,7 +12,7 @@
         
             <title>Problem  $probNum</title>
         </head>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&delayStartupUntil=configured"></script>
 
         <body>
             <h1>Problem  $probName</h1>
@@ -36,9 +36,20 @@
         <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <script>
 
-            document.querySelector("#desc").innerHTML = $probDesc;
+            // document.querySelector("#desc").innerHTML = \`$probDesc\`;
+            window.onload = ()=>
+            {
+                $.ajax({
+                    url:"/getDescription",
+                    type:"get",
+                    data: {probNum:"$probNum"},
+                    success:(data)=>{document.querySelector("#desc").innerHTML=data; MathJax.Hub.Configured();}
+                });
+                
+            };
             document.querySelector('#submit').addEventListener("click", ()=>
             {
+                document.querySelector("#result").innerHTML = '<div class="badge bg-warning text-wrap" style="width: 6rem;"> wait please... </div>';
                 $.ajax({
                     url: "/submitAnswer", 
                     type: "post",

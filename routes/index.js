@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 
-const idSet = JSON.parse(fs.readFileSync('user.json'), 'utf8');
-const probSet = JSON.parse(fs.readFileSync('problem.json'), 'utf8');
-
+let idSet = JSON.parse(fs.readFileSync('user.json'), 'utf8');
+let probSet = JSON.parse(fs.readFileSync('problem.json'), 'utf8');
+let solvedSet = JSON.parse(fs.readFileSync('user_solved.json'), 'utf8');
 /* GET home page. */
 router.get('/', function (req, res, next) {
     res.render('index', { session: req.session });
@@ -33,7 +33,11 @@ router.post('/login', (req, res, next) => {
         res.send("bad");
     }
 });
-
+router.post('/logout', (req, res, next)=>
+{
+    req.session.destroy();
+    res.redirect('/');
+});
 router.get('/logined', (req, res, next) => {
     if (!req.session.logined) {
         res.redirect('/');
@@ -68,6 +72,8 @@ router.post('/submitAnswer', (req, res, next) => {
         if ( (probNum in probSet) && yourAnswer === probSet[probNum].answer) 
         {
             // console.log("correct!!");
+            solvedSet[req.session.user_id].push(probNum);
+            fs.writeFile("user_solved.json", JSON.stringify(solvedSet), (err)=>{});
             res.send("correct");
         }
         else 
@@ -101,6 +107,9 @@ router.get('/problem', (req, res, next) => {
         let probNum = req.query.probNum;
         let probName = probSet[probNum].name;
         let probDesc = probSet[probNum].description;
+        let isSolved = solvedSet[req.session.user_id].find(e => e===probNum);
+        let initColor = isSolved?"success":"secondary";
+        let solvedTxt = isSolved?"solved":"unsolved";
         probDesc = probDesc.replaceAll("\\", "\\\\");
         console.log(probNum);
         // console.log(probDesc);
@@ -123,7 +132,7 @@ router.get('/problem', (req, res, next) => {
         
             <title>Problem  ${probNum}</title>
         </head>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&delayStartupUntil=configured"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML&delayStartupUntil=configured"></script>
 
         <body>
             <h1>Problem  ${probName}</h1>
@@ -137,7 +146,7 @@ router.get('/problem', (req, res, next) => {
             </div>
             <button type="button" class="btn btn-outline-primary" id="submit">Submit!</button>
             <div id="result">
-        
+                <div class="badge bg-${initColor} text-wrap" style="width: 6rem;"> ${solvedTxt} </div>
             </div>
         
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -160,6 +169,7 @@ router.get('/problem', (req, res, next) => {
             };
             document.querySelector('#submit').addEventListener("click", ()=>
             {
+                document.querySelector("#result").innerHTML = '<div class="badge bg-warning text-wrap" style="width: 6rem;"> wait please... </div>';
                 $.ajax({
                     url: "/submitAnswer", 
                     type: "post",
