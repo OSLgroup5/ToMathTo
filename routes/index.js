@@ -5,9 +5,17 @@ var fs = require('fs');
 let idSet = JSON.parse(fs.readFileSync('user.json'), 'utf8');
 let probSet = JSON.parse(fs.readFileSync('problem.json'), 'utf8');
 let solvedSet = JSON.parse(fs.readFileSync('user_solved.json'), 'utf8');
+let contestSet = JSON.parse(fs.readFileSync('contest.json'), 'utf8');
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.render('index', { session: req.session });
+    if ("logined" in req.session)
+    {
+        res.redirect('/logined');
+    }
+    else
+    {
+        res.render('index', { session: req.session });
+    }
 });
 
 router.post('/login', (req, res, next) => {
@@ -33,8 +41,7 @@ router.post('/login', (req, res, next) => {
         res.send("bad");
     }
 });
-router.post('/logout', (req, res, next)=>
-{
+router.post('/logout', (req, res, next) => {
     req.session.destroy();
     res.redirect('/');
 });
@@ -48,13 +55,43 @@ router.get('/logined', (req, res, next) => {
     }
 });
 router.get('/getProblemList', (req, res, next) => {
-    if (!req.session.logined) {
-        res.redirect('/');
+    // if (!req.session.logined) {
+    //     res.redirect('/');
+    // }
+    // else {
+    // res.send(probSet);
+// }
+
+    console.log("getProbList!!!!");
+    let sending = {};
+    for (x in probSet)
+    {
+        let can = true;
+        for (con in contestSet)
+        {
+            if (contestSet[con].problemList.find((y)=> parseInt(y)===parseInt(x)))
+            {
+                can = false;
+                break;
+            }
+        }
+        console.log(x + " " + can);
+        if (can) sending[x] = probSet[x];
     }
-    else {
-        res.send(probSet);
-    }
+    res.send(sending);
 });
+
+function canShow(probNum)
+{
+    let nowTime = new Date();
+    for (con in contestSet)
+    {
+
+        let constTime = new Date(contestSet[con].startTime);
+        if (contestSet[con].problemList.find(y=>parseInt(y)===parseInt(probNum)) && constTime > nowTime) return false;
+    }
+    return true;
+}
 
 router.post('/submitAnswer', (req, res, next) => {
     let probNum = req.body.probNum;
@@ -65,38 +102,48 @@ router.post('/submitAnswer', (req, res, next) => {
         res.redirect('/');
     }
     else {
-
+        if (!canShow(probNum))
+        {
+            res.send("incorrect");
+            return;
+        }
         // res.send("correct");
         // console.log(yourAnswer);
         // console.log(probSet[probNum].answer);
-        if ( (probNum in probSet) && yourAnswer === probSet[probNum].answer) 
-        {
+        if ((probNum in probSet) && yourAnswer === probSet[probNum].answer) {
             // console.log("correct!!");
             solvedSet[req.session.user_id].push(probNum);
-            fs.writeFile("user_solved.json", JSON.stringify(solvedSet), (err)=>{});
+            fs.writeFile("user_solved.json", JSON.stringify(solvedSet), (err) => { });
             res.send("correct");
         }
-        else 
-        {
+        else {
             // console.log("wrong!!");
             res.send("incorrect");
         }
     }
 });
+
+
 router.get('/getDescription', (req, res, next) => {
     let probNum = req.query.probNum;
     console.log(probNum);
-
     // console.log(req);
     if (!(probNum in probSet)) {
         res.send("incorrect problem number");
     }
     else {
-        res.send(probSet[probNum].description);
+        
+        if (!canShow(probNum))
+        {
+            res.send("?");
+        }
+        else
+        {
+            res.send(probSet[probNum].description);
+        }
         // res.write
     }
 });
-
 router.get('/problem', (req, res, next) => {
     // console.log(req.session);
     // console.log("problem reqest inputed");
@@ -107,10 +154,18 @@ router.get('/problem', (req, res, next) => {
         let probNum = req.query.probNum;
         let probName = probSet[probNum].name;
         let probDesc = probSet[probNum].description;
-        let isSolved = solvedSet[req.session.user_id].find(e => e===probNum);
-        let initColor = isSolved?"success":"secondary";
-        let solvedTxt = isSolved?"solved":"unsolved";
+        let isSolved = solvedSet[req.session.user_id].find(e => e === probNum);
+        let initColor = isSolved ? "success" : "secondary";
+        let solvedTxt = isSolved ? "solved" : "unsolved";
+        if (!canShow(probNum))
+        {
+            res.write("<script>alert('contest not start!')</script>");
+            res.write("<script>history.back()</script>");
+            return;
+        }
         probDesc = probDesc.replaceAll("\\", "\\\\");
+
+
         console.log(probNum);
         // console.log(probDesc);
         // res.render("problem");
@@ -193,7 +248,7 @@ router.get('/problem', (req, res, next) => {
             document.querySelector("#goToList").addEventListener("click",()=>
             {
                 console.log("clicked!");
-                window.location.href = "/logined";
+                history.back();
             });
         </script>
         
