@@ -74,6 +74,156 @@ router.get('/scoreboard', (req, res, next)=>
         res.end();
         return;
     }
+    let cname = req.query.cname;
+    var output = `<!doctype html>
+    <html lang="en">
+    
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
+        <title>${cname} scoreBoard!</title>
+    </head>
+    
+    <body>
+        <h1>${cname} scoreBoard!</h1>
+        <div id="list">
+    
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        $.ajax({
+            url: "/contest/getContestRank?cname=${cname}",
+            type: 'get',
+            success: (str)=>
+            {
+                let tar = document.querySelector('#list');
+                while (tar.hasChildNodes())
+                {
+                    tar.removeChild(tar.firstChild);
+                }
+                let arr = JSON.parse(str);
+
+                console.log(arr);
+                for (let i = 0; i < arr.length; ++i)
+                {
+                    let adding = document.createElement('div');
+                    adding.classList.add('d-flex');
+                    let uid = document.createElement('span');
+                    uid.innerText = arr[i].user_id;
+                    adding.appendChild(uid);
+                    for (probNum in arr[i].list)
+                    {
+                        let per = document.createElement('div');
+                        let col = arr[i].list[probNum]?"success":"secondary";
+                        let TxT = arr[i].list[probNum]?"YES":"NOP";
+                        per.innerHTML = \`<div class="bg-\${col} p-2 text-white">\${TxT}</div>\`;
+                        adding.appendChild(per);
+                    }
+                    tar.appendChild(adding);
+                }
+            }
+        });
+        setInterval(() => {
+            $.ajax({
+                url: "/contest/getContestRank?cname=${cname}",
+                type: 'get',
+                success: (str)=>
+                {
+                    let tar = document.querySelector('#list');
+                    while (tar.hasChildNodes())
+                    {
+                        tar.removeChild(tar.firstChild);
+                    }
+                    let arr = JSON.parse(str);
+    
+                    console.log(arr);
+                    for (let i = 0; i < arr.length; ++i)
+                    {
+                        let adding = document.createElement('div');
+                        adding.classList.add('d-flex');
+                        let uid = document.createElement('span');
+                        uid.innerText = arr[i].user_id;
+                        uid.classList.add('w-25');
+                        adding.appendChild(uid);
+                        for (probNum in arr[i].list)
+                        {
+                            let per = document.createElement('div');
+                            let col = arr[i].list[probNum]?"success":"secondary";
+                            let TxT = arr[i].list[probNum]?"YES":"NOP";
+                            per.innerHTML = \`<div class="bg-\${col} p-2 text-white">\${TxT}</div>\`;
+                            per.classList.add('w-25');
+                            adding.appendChild(per);
+                        }
+                        tar.appendChild(adding);
+                    }
+                }
+            });
+        }, 5000);
+    </script>
+    
+    </html>`;
+    
+    
+
+    res.send(output);
+});
+router.get('/getContestRank', (req, res, next)=>
+{
+    // console.log(req.query);
+    // console.log("hello in getContestRank");
+    if (!("cname" in req.query) || !(req.query.cname in contestSet))
+    {
+        res.end();
+    }
+    let path = "contestScore/"+req.query.cname+".json";
+    let isEx = fs.existsSync(path);
+    if (!isEx)
+    {
+        res.send(JSON.stringify([]));
+        return;
+    }
+
+    let cname = req.query.cname;
+    let D = JSON.parse(fs.readFileSync(path), 'utf8');
+    let sending = [];
+
+
+    console.log(D);
+    for (key in D)
+    {
+        let user_id = key;
+        console.log(key);
+        let pushing = {};
+        pushing.user_id = key;
+        pushing.solved = D[user_id].length;
+        pushing.list = {};
+        console.log(pushing);
+        for (let i = 0; i < contestSet[cname].problemList.length; ++i)
+        {
+            pushing.list[contestSet[cname].problemList[i]] = false;
+        }
+        for (let i = 0; i < D[user_id].length; ++i)
+        {
+            pushing.list[D[user_id][i]] = true;
+        }
+
+        sending.push(pushing);
+        console.log(pushing);
+    }
+    console.log(sending);
+    sending.sort((a, b)=>
+    {
+        return b.solved - a.solved;
+    });
+    console.log('yes!');
+    res.send(JSON.stringify(sending));
 });
 router.get('/contest', (req, res, next)=>
 {
