@@ -48,16 +48,19 @@ This project has adopted the [Microsoft Open Source Code of Conduct.](https://op
 ## detail features
 
 로그인, 로그아웃 기능
+
 문제 풀기 기능
-> MathJax 을 이용한 수식 표현
-> 서버로 입력한 답을 전송하여 ac여부 확인
-> 맞았다면 unsolved tag가 solved로 바뀜
-> 과거에 이미 풀었던 문제는 자동으로 solved로 뜸, 서버 재시작 해도 반영
-> 만약 해당 문제가 contest에 포함된 문제면 contest에 들어가야지 볼 수 있음
+
+> - MathJax 을 이용한 수식 표현
+> - 서버로 입력한 답을 전송하여 ac여부 확인
+> - 맞았다면 unsolved tag가 solved로 바뀜
+> - 과거에 이미 풀었던 문제는 자동으로 solved로 뜸, 서버 재시작 해도 반영
+> - 만약 해당 문제가 contest에 포함된 문제면 contest에 들어가야지 볼 수 있음
 
 contest기능
-> contest가 진행중인 시간에만 대회 페이지, 대회에 포함된 문제 페이지에 접속 가능함
-> 대회 진행중에 문제를 풀면 자동으로 scoreboard가 갱신됨.
-> 한문제라도 대회 진행중에 맞춘 사람은 자동으로 scoreboard에 올라감
-> 동일한 문제에 대해 여러번 푼다고 점수가 오르는건 아님
-> 스코어 보드는 맞은 문제수가 많은 순으로 정렬됨.
+
+> - contest가 진행중인 시간에만 대회 페이지, 대회에 포함된 문제 페이지에 접속 가능함
+> - 대회 진행중에 문제를 풀면 자동으로 scoreboard가 갱신됨.
+> - 한문제라도 대회 진행중에 맞춘 사람은 자동으로 scoreboard에 올라감
+> - 동일한 문제에 대해 여러번 푼다고 점수가 오르는건 아님
+> - 스코어 보드는 맞은 문제수가 많은 순으로 정렬됨.
