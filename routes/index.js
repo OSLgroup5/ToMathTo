@@ -110,16 +110,16 @@ function updateScoreBoard(con, user, probNum)
     console.log(path);
     let isEx = fs.existsSync(path);
     let org = {};
-    console.log("log-1");
+    // console.log("log-1");
     if (isEx) org = JSON.parse(fs.readFileSync(path, 'utf8'), 'utf8');
-    console.log("log0");
+    // console.log("log0");
     if (!(user in org)) org[user] = [];
-    console.log("log1");
+    // console.log("log1");
     if (!org[user].find(y=>parseInt(y)===parseInt(probNum)))
     {
         org[user].push(probNum);
     }
-    console.log(org);
+    // console.log(org);
     
     fs.writeFile(path, JSON.stringify(org), (err)=>
     {
