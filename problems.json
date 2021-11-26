@@ -21,11 +21,11 @@
     "answer": 35
   },
   "4": {
-    "name": "\\( \\lim_{n \\to \\infty }\\frac{1}{n}\\sum_{k= 1}^{n}\\sqrt{\\frac{3n}{3n+k}} \\)의 값은?",
-    "description": "",
-    "area": "",
-    "difficulty": "",
-    "answer": ""
+    "name": "004 Test Your Limitation",
+    "description": "\\( (\\lim_{n \\to \\infty }\\frac{1}{n}\\sum_{k= 1}^{n}\\sqrt{\\frac{3n}{3n+k}} + 6)*\\sqrt{3} \\)의 값은?",
+    "area": "calculus",
+    "difficulty": "gold",
+    "answer": "12"
   },
   "5": {
     "name": "",
