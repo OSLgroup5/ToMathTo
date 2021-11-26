@@ -5,7 +5,7 @@ var fs = require('fs');
 
 let idSet = JSON.parse(fs.readFileSync('user.json'), 'utf8');
 let probSet = JSON.parse(fs.readFileSync('problem.json'), 'utf8');
-let solvedSet = JSON.parse(fs.readFileSync('user_solved.json'), 'utf8');
+// let solvedSet = JSON.parse(fs.readFileSync('user_solved.json'), 'utf8');
 
 let contestSet = JSON.parse(fs.readFileSync('contest.json'), 'utf8');
 
@@ -56,13 +56,23 @@ router.get('/getProblemList', (req, res, next)=>
             return;
         }
         let sending = {};
-        for (x in contestSet[req.query.cname].problemList)
+        console.log(contestSet[req.query.cname].problemList);
+        for (let tt = 0; tt < contestSet[req.query.cname].problemList.length; ++tt)
         {
+            let x = contestSet[req.query.cname].problemList[tt];
             console.log("x : " + x);
             console.log(probSet[x]);
             sending[x] = probSet[x];
         }
         res.send(sending);
+    }
+});
+router.get('/scoreboard', (req, res, next)=>
+{
+    if (!("cname" in req.query) || !(req.query.cname in contestSet))
+    {
+        res.end();
+        return;
     }
 });
 router.get('/contest', (req, res, next)=>
@@ -119,6 +129,7 @@ router.get('/contest', (req, res, next)=>
         <body>
             <h1>${cname}</h1>
             <a class="btn btn-primary" href="/contest" role="button">goToContestList</a>
+            <a class="btn btn-primary" href="/contest/scoreboard?cname=${cname}" role="button">goToScoreBoard</a>
             <div>
                 <p class="fs-5">${sttime}</p>
                 <p class="fs-5">${edtime}</p>

@@ -93,6 +93,40 @@ function canShow(probNum)
     return true;
 }
 
+function problemToContest(probNum)
+{
+    for (con in contestSet)
+    {
+        if (contestSet[con].problemList.find(y=>parseInt(y)===parseInt(probNum)))
+        {
+            return con;
+        }
+    }
+    return undefined;
+}
+function updateScoreBoard(con, user, probNum)
+{
+    let path = "contestScore/"+con+".json";
+    console.log(path);
+    let isEx = fs.existsSync(path);
+    let org = {};
+    console.log("log-1");
+    if (isEx) org = JSON.parse(fs.readFileSync(path, 'utf8'), 'utf8');
+    console.log("log0");
+    if (!(user in org)) org[user] = [];
+    console.log("log1");
+    if (!org[user].find(y=>parseInt(y)===parseInt(probNum)))
+    {
+        org[user].push(probNum);
+    }
+    console.log(org);
+    
+    fs.writeFile(path, JSON.stringify(org), (err)=>
+    {
+        console.log(err);
+    });
+}
+
 router.post('/submitAnswer', (req, res, next) => {
     let probNum = req.body.probNum;
     let yourAnswer = parseInt(req.body.answer);
@@ -112,9 +146,34 @@ router.post('/submitAnswer', (req, res, next) => {
         // console.log(probSet[probNum].answer);
         if ((probNum in probSet) && yourAnswer === probSet[probNum].answer) {
             // console.log("correct!!");
-            solvedSet[req.session.user_id].push(probNum);
-            fs.writeFile("user_solved.json", JSON.stringify(solvedSet), (err) => { });
+            
+            if (! (req.session.user_id in solvedSet))
+            {
+                solvedSet[req.session.user_id] = [];
+            }
+            let is_first = false;
+            if (!Array.isArray(solvedSet[req.session.user_id]))
+                solvedSet[req.session.user_id] = [];
+            if (!solvedSet[req.session.user_id].find(y=>parseInt(y)===parseInt(probNum)))
+            {
+                solvedSet[req.session.user_id].push(probNum);
+
+                is_first = true;
+            }
+            fs.writeFileSync("user_solved.json", JSON.stringify(solvedSet), (err) => { });
             res.send("correct");
+
+            let con = problemToContest(probNum);
+            
+            console.log("let's update contestScoreboard");
+            console.log(con);
+            console.log(new Date());
+            console.log(contestSet[con].endTime);
+            if (con && new Date() < new Date(contestSet[con].endTime) && is_first)
+            {
+                console.log("inside if");
+                updateScoreBoard(con, req.session.user_id, probNum);
+            }
         }
         else {
             // console.log("wrong!!");
@@ -154,6 +213,14 @@ router.get('/problem', (req, res, next) => {
         let probNum = req.query.probNum;
         let probName = probSet[probNum].name;
         let probDesc = probSet[probNum].description;
+        if (!(req.session.user_id in solvedSet))
+        {
+            solvedSet[req.session.user_id] = [];
+        }
+        if (!Array.isArray(solvedSet[req.session.user_id]))
+        {
+            solvedSet[req.session.user_id] = [];
+        }
         let isSolved = solvedSet[req.session.user_id].find(e => e === probNum);
         let initColor = isSolved ? "success" : "secondary";
         let solvedTxt = isSolved ? "solved" : "unsolved";

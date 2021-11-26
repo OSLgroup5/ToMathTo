@@ -1,7 +1,7 @@
 {
-    "승재배 으하하대회":{
-        "problemList":[1, 2],
-        "startTime":"2021-11-27 00:00",
-        "endTime":"2021-11-27 14:00"
+    "leesjContest":{
+        "problemList":["1", "2"],
+        "startTime":"2021-11-26 00:00",
+        "endTime":"2021-11-28 14:00"
     }
 }
