@@ -24,7 +24,7 @@
     - answer for problem
 
 4. ___problems.txt___ : converted text file from _problems.json_
-5. ___test.html___ : test the usage of problems.json on html
+5. ~~___test.html___ : test the usage of problems.json on html~~
 6. ___userdata.json___ : contain user data
    - user id
    - solved problems by user
