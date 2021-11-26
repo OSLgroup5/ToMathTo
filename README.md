@@ -49,7 +49,7 @@ This project has adopted the [Microsoft Open Source Code of Conduct.](https://op
 
 ## detail features (all features are implemented using ***only pure javascript and html***)
 
-로그인, 로그아웃 기능
+로그인, 로그아웃, 회원가입 기능
 
 문제 풀기 기능
 
