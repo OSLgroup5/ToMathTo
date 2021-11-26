@@ -117,7 +117,7 @@ router.get('/scoreboard', (req, res, next)=>
                     adding.classList.add('d-flex');
                     let uid = document.createElement('span');
                     uid.innerText = arr[i].user_id;
-                    uid.style.width="25%";
+                    uid.style.width="10%";
                     adding.appendChild(uid);
                     for (probNum in arr[i].list)
                     {
@@ -125,7 +125,7 @@ router.get('/scoreboard', (req, res, next)=>
                         let col = arr[i].list[probNum]?"success":"secondary";
                         let TxT = arr[i].list[probNum]?"YES":"NOP";
                         per.innerHTML = \`<div class="bg-\${col} p-2 text-white">\${TxT}</div>\`;
-                        per.style.width="25%";
+                        per.style.width="10%";
                         adding.appendChild(per);
                     }
                     tar.appendChild(adding);
@@ -152,7 +152,7 @@ router.get('/scoreboard', (req, res, next)=>
                         adding.classList.add('d-flex');
                         let uid = document.createElement('span');
                         uid.innerText = arr[i].user_id;
-                        uid.style.width="25%";
+                        uid.style.width="10%";
                         adding.appendChild(uid);
                         for (probNum in arr[i].list)
                         {
@@ -160,7 +160,7 @@ router.get('/scoreboard', (req, res, next)=>
                             let col = arr[i].list[probNum]?"success":"secondary";
                             let TxT = arr[i].list[probNum]?"YES":"NOP";
                             per.innerHTML = \`<div class="bg-\${col} p-2 text-white">\${TxT}</div>\`;
-                            per.style.width="25%";
+                            per.style.width="10%";
                             adding.appendChild(per);
                         }
                         tar.appendChild(adding);
