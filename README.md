@@ -30,3 +30,4 @@
    - solved problems by user
    - user ranking
 7. ___users.json___ : 
+8. ___addProblem.js___: Algorithm for appending problem by user
