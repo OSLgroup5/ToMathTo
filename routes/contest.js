@@ -3,7 +3,7 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 
-let idSet = JSON.parse(fs.readFileSync('user.json'), 'utf8');
+// let idSet = JSON.parse(fs.readFileSync('user.json'), 'utf8');
 let probSet = JSON.parse(fs.readFileSync('problem.json'), 'utf8');
 // let solvedSet = JSON.parse(fs.readFileSync('user_solved.json'), 'utf8');
 
@@ -117,6 +117,7 @@ router.get('/scoreboard', (req, res, next)=>
                     adding.classList.add('d-flex');
                     let uid = document.createElement('span');
                     uid.innerText = arr[i].user_id;
+                    uid.style.width="25%";
                     adding.appendChild(uid);
                     for (probNum in arr[i].list)
                     {
@@ -124,6 +125,7 @@ router.get('/scoreboard', (req, res, next)=>
                         let col = arr[i].list[probNum]?"success":"secondary";
                         let TxT = arr[i].list[probNum]?"YES":"NOP";
                         per.innerHTML = \`<div class="bg-\${col} p-2 text-white">\${TxT}</div>\`;
+                        per.style.width="25%";
                         adding.appendChild(per);
                     }
                     tar.appendChild(adding);

@@ -45,7 +45,9 @@ There are so much many ways in which you don't can't participate in this project
 
 This project has adopted the [Microsoft Open Source Code of Conduct.](https://opensource.microsoft.com/codeofconduct/) For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [asdffdsa@g.skku.edu](mailto:asdffdsa@g.skku.edu) with any additional questions or comments.
 
-## detail features
+---
+
+## detail features (all features are implemented using ***only pure javascript and html***)
 
 로그인, 로그아웃 기능
 

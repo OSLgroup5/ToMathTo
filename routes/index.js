@@ -171,7 +171,7 @@ router.post('/submitAnswer', (req, res, next) => {
             console.log(contestSet[con].endTime);
             if (con && new Date() < new Date(contestSet[con].endTime) && is_first)
             {
-                console.log("inside if");
+                // console.log("inside if");
                 updateScoreBoard(con, req.session.user_id, probNum);
             }
         }
@@ -181,8 +181,39 @@ router.post('/submitAnswer', (req, res, next) => {
         }
     }
 });
-
-
+router.get('/register', (req, res, next)=>
+{
+    res.render('register');
+});
+router.post('/registerInfo', (req, res, next)=>
+{
+    let id = req.body.id;
+    let pw = req.body.pw;
+    // console.log(id);
+    // console.log(pw);
+    if (id in idSet)
+    {
+        res.write("<script>alert('already exist id!')</script>");
+        res.write("<script>history.back()</script>");
+        return;
+    }
+    else
+    {
+        // console.log(id);
+        // console.log(pw);
+        idSet[id] = {};
+        idSet[id].password = pw;
+        // console.log("check");
+        // res.write("<script>alert('register complete!')</script>");
+        res.send('<script type="text/javascript">alert("register complete!");location.href="/";</script>');
+        // res.redirect('/');
+        // res.send('<script type="text/javascript">location.href="/"</script>');
+        fs.writeFileSync("user.json", JSON.stringify(idSet));
+        // 
+        // res.write("<script>window.location.href='/'</script>");
+        
+    }
+});
 router.get('/getDescription', (req, res, next) => {
     let probNum = req.query.probNum;
     console.log(probNum);
