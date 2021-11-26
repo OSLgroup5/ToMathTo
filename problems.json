@@ -19,5 +19,131 @@
     "area": "discrete mathmatics",
     "difficulty": "bronze",
     "answer": 35
+  },
+  "4": {
+    "name": "\\( \\lim_{n \\to \\infty }\\frac{1}{n}\\sum_{k= 1}^{n}\\sqrt{\\frac{3n}{3n+k}} \\)의 값은?",
+    "description": "",
+    "area": "",
+    "difficulty": "",
+    "answer": ""
+  },
+  "5": {
+    "name": "",
+    "description": "",
+    "area": "",
+    "difficulty": "",
+    "answer": ""
+  },
+  "6": {
+    "name": "",
+    "description": "",
+    "area": "",
+    "difficulty": "",
+    "answer": ""
+  },
+  "7": {
+    "name": "",
+    "description": "",
+    "area": "",
+    "difficulty": "",
+    "answer": ""
+  },
+  "8": {
+    "name": "",
+    "description": "",
+    "area": "",
+    "difficulty": "",
+    "answer": ""
+  },
+  "9": {
+    "name": "",
+    "description": "",
+    "area": "",
+    "difficulty": "",
+    "answer": ""
+  },
+  "10": {
+    "name": "",
+    "description": "",
+    "area": "",
+    "difficulty": "",
+    "answer": ""
+  },
+  "11": {
+    "name": "",
+    "description": "",
+    "area": "",
+    "difficulty": "",
+    "answer": ""
+  },
+  "12": {
+    "name": "",
+    "description": "",
+    "area": "",
+    "difficulty": "",
+    "answer": ""
+  },
+  "13": {
+    "name": "",
+    "description": "",
+    "area": "",
+    "difficulty": "",
+    "answer": ""
+  },
+  "14": {
+    "name": "",
+    "description": "",
+    "area": "",
+    "difficulty": "",
+    "answer": ""
+  },
+  "15": {
+    "name": "",
+    "description": "",
+    "area": "",
+    "difficulty": "",
+    "answer": ""
+  },
+  "16": {
+    "name": "",
+    "description": "",
+    "area": "",
+    "difficulty": "",
+    "answer": ""
+  },
+  "17": {
+    "name": "",
+    "description": "",
+    "area": "",
+    "difficulty": "",
+    "answer": ""
+  },
+  "18": {
+    "name": "",
+    "description": "",
+    "area": "",
+    "difficulty": "",
+    "answer": ""
+  },
+  "19": {
+    "name": "",
+    "description": "",
+    "area": "",
+    "difficulty": "",
+    "answer": ""
+  },
+  "20": {
+    "name": "",
+    "description": "",
+    "area": "",
+    "difficulty": "",
+    "answer": ""
+  },
+  "number": {
+    "name": "",
+    "description": "",
+    "area": "",
+    "difficulty": "",
+    "answer": ""
   }
 }
