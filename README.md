@@ -55,7 +55,7 @@ you can also read [CODE_OF_CONDUCT.md](https://github.com/OSLgroup5/RedPen/blob/
 문제 풀기 기능
 
 > - MathJax 을 이용한 수식 표현
-> - 서버로 입력한 답을 전송하여 ac여부 확인
+> - 서버로 입력한 답을 전송하여 ac여부 확인, 답을 받아오는 동안은 waiting... 으로 표시, 받아온 후에는 wrong 또는 success
 > - 맞았다면 unsolved tag가 solved로 바뀜
 > - 과거에 이미 풀었던 문제는 자동으로 solved로 뜸, 서버 재시작 해도 반영
 > - 만약 해당 문제가 contest에 포함된 문제면 contest에 들어가야지 볼 수 있음
