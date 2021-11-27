@@ -67,15 +67,19 @@
 							<li><a href="#">Troubleshooting</a></li>
 						</ul>
 					</li-->
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
-						<ul class="dropdown-menu">
-							<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
-							<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
-							<li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
-							<li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
-						</ul>
-					</li>
+
+                    <% if (session.logined) { %>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span><%= session.user_id %> </span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
+                                <li><a href="/logout"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+                            </ul>
+                        </li>
+                    <% } %>
+					
 					<!-- <li>
 						<a class="update-pro" href="https://www.themeineed.com/downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
 					</li> -->
@@ -90,8 +94,8 @@
 			<nav>
 				<ul class="nav">
 					<li><a href="/" class=""><i class="lnr lnr-home"></i> <span>Home</span></a></li>
-					<li><a href="problems" class=""><i class="lnr lnr-code"></i> <span>Problems</span></a></li>
-					<li><a href="contest" class="active"><i class="lnr lnr-chart-bars"></i> <span>contest</span></a></li>
+					<li><a href="problems" class="active"><i class="lnr lnr-code"></i> <span>Problems</span></a></li>
+					<li><a href="contest" class=""><i class="lnr lnr-chart-bars"></i> <span>contest</span></a></li>
 					<!--li><a href="settings.html" class=""><i class="lnr lnr-cog"></i> <span>Settings</span></a></li-->
 					<li><a href="notifications.html" class=""><i class="lnr lnr-alarm"></i> <span>Notifications</span></a></li>
 					<li>
@@ -99,7 +103,9 @@
 						<div id="subPages" class="collapse ">
 							<ul class="nav">
 								<li><a href="page-profile.html" class="">Profile</a></li>
-								<li><a href="page-login.html" class="">Login</a></li>
+                                <% if (!session.logined) { %>
+                                    <li><a href="page-login.html" class="">Login</a></li>
+                                <% } %>
 							</ul>
 						</div>
 					</li>
@@ -112,79 +118,45 @@
 	</div>
     <!-- END LEFT SIDEBAR --> 
     <div class="main">
-            <div class="main-content">
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+
             <div class="container-fluid">
-                <!-- Image -->
-                <div class="panel panel-headline">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Weekly Overview</h3>
-                        <p class="panel-subtitle">Period: Oct 14, 2016 - Oct 21, 2016</p>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="metric">
-                                    <span class="icon"><i class="fa fa-download"></i></span>
-                                    <p>
-                                        <span class="number">1,252</span>
-                                        <span class="title">Downloads</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="metric">
-                                    <span class="icon"><i class="fa fa-shopping-bag"></i></span>
-                                    <p>
-                                        <span class="number">203</span>
-                                        <span class="title">Sales</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="metric">
-                                    <span class="icon"><i class="fa fa-eye"></i></span>
-                                    <p>
-                                        <span class="number">274,678</span>
-                                        <span class="title">Visits</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="metric">
-                                    <span class="icon"><i class="fa fa-bar-chart"></i></span>
-                                    <p>
-                                        <span class="number">35%</span>
-                                        <span class="title">Conversions</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-9">
-                                <div id="headline-chart" class="ct-chart"></div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="weekly-summary text-right">
-                                    <span class="number">2,315</span> <span class="percentage"><i class="fa fa-caret-up text-success"></i> 12%</span>
-                                    <span class="info-label">Total Sales</span>
-                                </div>
-                                <div class="weekly-summary text-right">
-                                    <span class="number">$5,758</span> <span class="percentage"><i class="fa fa-caret-up text-success"></i> 23%</span>
-                                    <span class="info-label">Monthly Income</span>
-                                </div>
-                                <div class="weekly-summary text-right">
-                                    <span class="number">$65,938</span> <span class="percentage"><i class="fa fa-caret-down text-danger"></i> 8%</span>
-                                    <span class="info-label">Total Income</span>
-                                </div>
-                            </div>
-                        </div>
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Problem List</h3>
+                    <div class="right">
+                        <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+                        <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
                     </div>
                 </div>
-                <!-- END Image-->
+                <div class="panel-body no-padding">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Order No.</th>
+                                <th>Name</th>
+                                <th>area</th>
+                                <th>rank</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="problemList">
+                            <!-- <tr>
+                                <td><a href="#">763648</a></td>
+                                <td>Steve</td>
+                                <td>$122</td>
+                                <td>Oct 21, 2016</td>
+                                <td><span class="label label-success">COMPLETED</span></td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+                
             </div>
         </div>
+        </div>
     </div>
-    
     <!-- END WRAPPER -->
 	<!-- Javascript -->
 	<script src="assets/vendor/jquery/jquery.min.js"></script>
@@ -192,5 +164,53 @@
 	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 	<script src="assets/scripts/klorofil-common.js"></script>
 </body>
+<script>
+    // <tr>
+    //         <td><a href="#">763648</a></td>
+    //         <td>Steve</td>
+    //         <td>$122</td>
+    //         <td>Oct 21, 2016</td>
+    //         <td><span class="label label-success">COMPLETED</span></td>
+    //     </tr>
+    $.ajax({
+            url: "/getProblemList",
+            type: 'get',
+            success: (data) => {
+                // console.log(data);
+                let list = document.querySelector("#problemList");
+                let keys = Object.keys(data);
+                for (let i = 0; i < keys.length; ++i) {
+                    let num = keys[i];
+                    let it = data[keys[i]];
+                    let name = it.name;
+                    let area = it.area;
+                    let rank = it.rank;
+                    let adding = document.createElement('tr');
+                    let color = it.status===1?"success":"info";
+                    let str = it.status===1?"success":"unsolved";
+                    adding.innerHTML = `
+                        <td><a href="/problem?probNum=${num}">${num}</a></td>
+                        <td>${name}</td>
+                        <td>${area}</td>
+                        <td>${rank}</td>
+                        <td><span class="label label-${color}">${str}</span></td>
+                    `;
+                    list.appendChild(adding);
+                    // let adding = document.createElement("div");
+                    // adding.classList.add("d-flex");
+                    // let probNum = document.createElement("div");
+                    // probNum.innerText = keys[i];
+                    // adding.onclick = () => {
+                    //     window.location.href = "/problem?probNum=" + keys[i];
+                    // };
+                    // adding.appendChild(probNum);
+                    // let desc = document.createElement("div");
+                    // desc.innerText = it.name;
 
+                    // adding.appendChild(desc);
+                    // list.appendChild(adding);
+                }
+            }
+        });
+</script>
 </html>

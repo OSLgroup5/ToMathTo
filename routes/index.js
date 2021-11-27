@@ -14,7 +14,7 @@ router.get('/', function (req, res, next) {
     // else {
     //     res.render('index', { session: req.session });
     // }
-    res.render('index');
+    res.render('index.ejs', {session:req.session});
 });
 
 router.post('/login', (req, res, next) => {
@@ -50,6 +50,10 @@ router.post('/logout', (req, res, next) => {
     req.session.destroy();
     res.redirect('/');
 });
+router.get('/logout', (req, res, next) => {
+    req.session.destroy();
+    res.redirect('/');
+});
 router.get('/logined', (req, res, next) => {
     if (!req.session.logined) {
         res.redirect('/');
@@ -75,6 +79,10 @@ router.get('/problemMake', (req, res, next) => {
             res.render('problemMake.html');
         }
     }
+});
+router.get('/problems', (req, res, next)=>
+{
+    res.render("problems.ejs", {session: req.session});
 });
 let access = {
     user: 1,
@@ -141,7 +149,12 @@ router.post('/problemMakingData', (req, res, next) => {
     
 
 });
-
+function is_solved(user, x) {
+    if (!(user in solvedSet)) return 0;
+    let ret = solvedSet[user].find(y=>parseInt(x) === parseInt(y));
+    if (ret) return 1;
+    return 0;
+}
 router.get('/getProblemList', (req, res, next) => {
     // if (!req.session.logined) {
     //     res.redirect('/');
@@ -150,7 +163,7 @@ router.get('/getProblemList', (req, res, next) => {
     // res.send(probSet);
     // }
 
-    console.log("getProbList!!!!");
+    // console.log("getProbList!!!!");
     let sending = {};
     for (x in probSet) {
         let can = true;
@@ -161,7 +174,12 @@ router.get('/getProblemList', (req, res, next) => {
             }
         }
         console.log(x + " " + can);
-        if (can) sending[x] = probSet[x];
+        if (can) 
+        {
+            sending[x] = probSet[x];
+            if (!req.session.logined) sending[x].status = -1;
+            else sending[x].status = is_solved(req.session.user_id, x);
+        }
     }
     res.send(sending);
 });
