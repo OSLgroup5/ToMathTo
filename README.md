@@ -44,6 +44,7 @@ There are so much many ways in which you don't can't participate in this project
 ## Code of Conduct
 
 This project has adopted the [Microsoft Open Source Code of Conduct.](https://opensource.microsoft.com/codeofconduct/) For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [asdffdsa@g.skku.edu](mailto:asdffdsa@g.skku.edu) with any additional questions or comments.
+you can also read [CODE_OF_CONDUCT.md](https://github.com/OSLgroup5/RedPen/blob/main/CODE_OF_CONDUCT.md)
 
 ---
 
