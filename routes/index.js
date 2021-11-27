@@ -328,6 +328,12 @@ router.get('/problem', (req, res, next) => {
         ///////////////////////
         // console.log(req.query.probNum);
         // res.render('problem');
+        // res.render("problem.ejs", {
+        //     "probNum": probNum,
+        //     "probName": probName,
+        //     "initColor": initColor,
+        //     "solvedTxt": solvedTxt,
+        // });
         var output = `<!doctype html>
         <html lang="en">
         
