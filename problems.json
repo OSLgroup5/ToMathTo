@@ -22,14 +22,14 @@
     },
     "4": {
         "name": "Test Your Limitation",
-        "description": "\\( \\lim_{n \\to \\infty }\\frac{1}{n}\\sum_{k= 1}^{n}\\sqrt{\\frac{3n}{3n+k}} + 6)*\\sqrt{3} \\)의 값은?",
+        "description": "\\[ \\lim_{n \\to \\infty }\\frac{1}{n}\\sum_{k= 1}^{n}\\sqrt{\\frac{3n}{3n+k}} + 6)*\\sqrt{3} \\]의 값은?",
         "area": "calculus",
         "rank": "gold",
         "answer": "12"
     },
     "5": {
         "name": "Test Your Limitation2",
-        "description": "실수 \\( a \\)에 대하여 함수 \\( f(x) \\)를 <br><br>\\( f(x)=\\lim_{n \\to \\infty }\\frac{(a-2)^{2n-1}+2x}{3x^{2n}+1} \\) <br><br>라 하자. \\( (f \\circ f)(1) = \\frac{5}{4} \\)가 되도록 하는 모든 a의 값의 합의 두배는?",
+        "description": "실수 \\( a \\)에 대하여 함수 \\( f(x) \\)를 <br><br>\\[ f(x)=\\lim_{n \\to \\infty }\\frac{(a-2)^{2n-1}+2x}{3x^{2n}+1} \\] <br><br>라 하자. \\( (f \\circ f)(1) = \\frac{5}{4} \\)가 되도록 하는 모든 a의 값의 합의 두배는?",
         "area": "calculus",
         "rank": "platinum",
         "answer": "15"
@@ -78,7 +78,7 @@
     },
     "12": {
         "name": "Test Your Limitation.. and Fraction?",
-        "description": "\\( \\lim_{n \\to \\infty }\\frac{1}{\\sqrt{4n^{2}+2n+1}-2n} \\)의 값은?",
+        "description": "\\[ \\lim_{n \\to \\infty }\\frac{1}{\\sqrt{4n^{2}+2n+1}-2n} \\]의 값은?",
         "area": "calculus",
         "rank": "silver",
         "answer": "2"
