@@ -98,46 +98,46 @@
         "answer": "34"
     },
     "15": {
-        "name": "",
-        "description": "",
-        "area": "",
-        "rank": "",
-        "answer": ""
+        "name": "Distance in 2D",
+        "description": "좌표공간의 두 점 (\\ A(2,0,1) \\), (\\ B(3,2,0) \\)에서 같은 거리에 있는 (\\ y \\)축 위의 점의 좌표가 (\\ (0,a,0) \\)일 때, (\\ a \\)의 값은?",
+        "area": "calculus",
+        "rank": "bronze",
+        "answer": "2"
     },
     "16": {
-        "name": "",
-        "description": "",
-        "area": "",
-        "rank": "",
-        "answer": ""
+        "name": "X, X, X and X...",
+        "description": " (\\ \\left ( 2x+\\frac{1}{x^{2}} \\right )^{4} \\)의 전개식에서 (\\ x \\)의 계수는?",
+        "area": "calculus",
+        "rank": "bronze",
+        "answer": "32"
     },
     "17": {
-        "name": "",
-        "description": "",
-        "area": "",
-        "rank": "",
-        "answer": ""
+        "name": "The Moving Point",
+        "description": "좌표평면  위를  움직이는  점  (\\ P \\)의  시각  (\\ t\\left ( 0&ltt&lt\\frac{\\pi }{2} \\right ) \\)에서의 위치 (\\ (x,y) \\)가 <br>(\\ x=t+\\textup{sin}t\\textup{cos}t, y=\\textup{tan}t \\) <br>이다.  (\\ 0&ltt&lt\\frac{\\pi}{2} \\) 에서  점  (\\ P \\)의  속력의  최솟값은?",
+        "area": "calculus",
+        "rank": "silver",
+        "answer": "2"
     },
     "18": {
-        "name": "",
-        "description": "",
-        "area": "",
-        "rank": "",
-        "answer": ""
+        "name": "Inflection Point",
+        "description": "곡선 (\\ ax^{2}-2\\textup{sin}2x \\)가  변곡점을  갖도록  하는  정수 (\\ a \\)의 개수는?",
+        "area": "caculus",
+        "rank": "silver",
+        "answer": "7"
     },
     "19": {
-        "name": "",
-        "description": "",
-        "area": "",
-        "rank": "",
-        "answer": ""
+        "name": "Powerful Geometry",
+        "description": "좌표공간에서  두  점 (\\ \\textup{A}(3,-3,3) \\), (\\ \\textup{B}(-2,7,-2) \\)에  대하여 선분 (\\ \\textup{AB} \\)를  포함하고  구 (\\ x^{2}+y^{2}+z^{2}=1 \\)에  접하는  두  평면을 (\\ \\alpha \\),  (\\ \\beta \\)라  하자.  두  평면  (\\ \\alpha \\),  (\\ \\beta \\)와  구 (\\ x^{2}+y^{2}+z^{2}=1 \\)의  접점을 각각  (\\ \\textup{C} \\), (\\ \\textup{D} \\)라  할  때,  사면체  (\\ \\textup{ABCD} \\)의  부피는 (\\ frac{q}{p}\\sqrt{3} \\)이다. <br>(\\ p+q \\)의  값을  구하시오.  (단,  (\\ p \\)와  (\\ q \\)는  서로소인  자연수이다.)",
+        "area": "geometry",
+        "rank": "platinum",
+        "answer": "29"
     },
     "20": {
-        "name": "",
-        "description": "",
-        "area": "",
-        "rank": "",
-        "answer": ""
+        "name": "Only One",
+        "description": "양의  실수  (\\ t \\)에  대하여  곡선 (\\ y=t^{3}\\textup{ln}(x-t) \\)가 곡선 (\\ y=2e^{x-a} \\)과  오직  한  점에서  만나도록  하는  실수 (\\ a \\)의 값을 (\\ f(t) \\)라  하자. (\\  \\left \\{ f{}'\\left ( \\frac{1}{3} \\right ) \\right \\}^{2} \\)의  값을  구하시오.",
+        "area": "calculus&geometry",
+        "rank": "platinum",
+        "answer": "64"
     },
     "default": {
         "name": "",
