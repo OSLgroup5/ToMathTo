@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
+
+    <title>Page Title</title>
+    <style>
+        .container {
+            width: 640px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1"><i class="bi-alarm" style="font-size: 2rem; color: cornflowerblue;"></i>
+                ToMathTo</span>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="mb-2 mt-2">
+            <input type="text" class="form-control" id="input-title" placeholder="Enter a problem title here" />
+            <input type="text" class="form-control" id="input-description"
+                placeholder="Enter a prpoblem description here" />
+            <input type="text" class="form-control" id="input-area" placeholder="Enter a problem area here" />
+            <input type="text" class="form-control" id="input-rank" placeholder="Enter a problem rank here" />
+            <input type="text" class="form-control" id="input-answer" placeholder="Enter a problem answer here" />
+
+            <button type="button" id="add" class="btn btn-primary ms-1 text-nowrap">
+                <i class="bi bi-plus"></i> Add
+            </button>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        document.querySelector('#add').addEventListener('click', ()=>
+        {
+            // let title = document.querySelector('#input-title').value;
+            // let description = document.querySelector('#input-description').value;
+            // let area = document.querySelector('#input-area').value;
+            // let rank = document.querySelector('#input-rank').value;
+            // let answer = document.querySelector('#input-answer').value;
+            let input = {
+                input_title: "#input-title",
+                input_description: "#input-description",
+                input_area: "#input-area",
+                input_rank: "#input-rank",
+                input_answer: "#input-answer",
+            };
+
+            //---------여기서부터 eventListener에 들어갈 함수 내용
+            let p_title = document.querySelector(input.input_title);
+            let p_description = document.querySelector(input.input_description);
+            let p_area = document.querySelector(input.input_area);
+            let p_rank = document.querySelector(input.input_rank);
+            let p_answer = document.querySelector(input.input_answer);
+
+            $.ajax({
+                url: "/problemMakingData",
+                type: "post",
+                data:{
+                    title:p_title.value,
+                    description: p_description.value,
+                    area: p_area.value,
+                    rank: p_rank.value,
+                    answer: p_answer.value
+                },
+                success: (data)=>
+                {
+                    if (data === "success!")
+                    {
+                        p_title.value = "";
+                        p_description.value = "";
+                        p_area.value = "";
+                        p_rank.value = "";
+                        p_answer.value = "";
+                    }
+                    alert(data);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

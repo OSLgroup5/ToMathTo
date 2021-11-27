@@ -8,12 +8,10 @@ let solvedSet = JSON.parse(fs.readFileSync('user_solved.json'), 'utf8');
 let contestSet = JSON.parse(fs.readFileSync('contest.json'), 'utf8');
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    if ("logined" in req.session)
-    {
+    if ("logined" in req.session) {
         res.redirect('/logined');
     }
-    else
-    {
+    else {
         res.render('index', { session: req.session });
     }
 });
@@ -51,26 +49,106 @@ router.get('/logined', (req, res, next) => {
     }
     else {
         // console.log(req.session);
-        res.render('logined', { session: req.session });
+        res.render('logined.ejs', { session: req.session, gunhan: idSet[req.session.user_id].gunhan });
     }
 });
+
+router.get('/problemMake', (req, res, next) => {
+    if (!req.session.logined) {
+        res.redirect('/');
+    }
+    else {
+        let user_id = req.session.user_id;
+        if (idSet[user_id].gunhan < 2) {
+            res.redirect('/');
+
+        }
+        else {
+            // console.log("hello");
+            res.render('problemMake.html');
+        }
+    }
+});
+let access = {
+    user: 1,
+    master: 2,
+    root_master: 3,
+};
+router.post('/problemMakingData', (req, res, next) => {
+    if (!req.session.logined)
+    {
+        res.send("login먼저 하세요");
+        return;
+    }
+    console.log("hello?!");
+    let title = req.body.title;
+    let description = req.body.description;
+    let area = req.body.area;
+    let rank = req.body.rank;
+    let answer = req.body.answer;
+    console.log(title);
+    console.log(description);
+    console.log(area);
+    console.log(rank);
+    console.log(answer);
+    if (
+        idSet[req.session.user_id].gunhan === access.master ||
+        idSet[req.session.user_id].gunhan === access.root_master
+    ) {
+        //한 칸이라도 입력 안했다면 경고를 출력한 뒤 return without adding
+        if (
+            !title.length ||
+            !description.length ||
+            !area.length ||
+            !rank.length ||
+            !answer.length
+        ) {
+            // alert("빈 칸이 있습니다.");
+            res.send("빈 칸이 있습니다.");
+            return;
+        }
+        console.log("hello");
+        let number = "" + (Object.keys(probSet).length + 1);
+        // problems.number++;
+        console.log(number);
+
+        // probSet[number] = {};
+        probSet[number]={};
+        // console.log("aaasdfds");
+        probSet[number].name = title;
+        probSet[number].description = description;
+        probSet[number].area = area;
+        probSet[number].rank = rank;
+        probSet[number].answer = answer;
+        console.log(probSet.number);
+        fs.writeFile("problem.json", JSON.stringify(probSet), (err)=>
+        {
+            console.log(err);
+        });
+        res.send("success!");
+    }
+    else
+    {
+        res.send("권한이 허용되지 않았습니다.");
+    }
+    
+
+});
+
 router.get('/getProblemList', (req, res, next) => {
     // if (!req.session.logined) {
     //     res.redirect('/');
     // }
     // else {
     // res.send(probSet);
-// }
+    // }
 
     console.log("getProbList!!!!");
     let sending = {};
-    for (x in probSet)
-    {
+    for (x in probSet) {
         let can = true;
-        for (con in contestSet)
-        {
-            if (contestSet[con].problemList.find((y)=> parseInt(y)===parseInt(x)))
-            {
+        for (con in contestSet) {
+            if (contestSet[con].problemList.find((y) => parseInt(y) === parseInt(x))) {
                 can = false;
                 break;
             }
@@ -81,32 +159,26 @@ router.get('/getProblemList', (req, res, next) => {
     res.send(sending);
 });
 
-function canShow(probNum)
-{
+function canShow(probNum) {
     let nowTime = new Date();
-    for (con in contestSet)
-    {
+    for (con in contestSet) {
 
         let constTime = new Date(contestSet[con].startTime);
-        if (contestSet[con].problemList.find(y=>parseInt(y)===parseInt(probNum)) && constTime > nowTime) return false;
+        if (contestSet[con].problemList.find(y => parseInt(y) === parseInt(probNum)) && constTime > nowTime) return false;
     }
     return true;
 }
 
-function problemToContest(probNum)
-{
-    for (con in contestSet)
-    {
-        if (contestSet[con].problemList.find(y=>parseInt(y)===parseInt(probNum)))
-        {
+function problemToContest(probNum) {
+    for (con in contestSet) {
+        if (contestSet[con].problemList.find(y => parseInt(y) === parseInt(probNum))) {
             return con;
         }
     }
     return undefined;
 }
-function updateScoreBoard(con, user, probNum)
-{
-    let path = "contestScore/"+con+".json";
+function updateScoreBoard(con, user, probNum) {
+    let path = "contestScore/" + con + ".json";
     console.log(path);
     let isEx = fs.existsSync(path);
     let org = {};
@@ -115,47 +187,42 @@ function updateScoreBoard(con, user, probNum)
     // console.log("log0");
     if (!(user in org)) org[user] = [];
     // console.log("log1");
-    if (!org[user].find(y=>parseInt(y)===parseInt(probNum)))
-    {
+    if (!org[user].find(y => parseInt(y) === parseInt(probNum))) {
         org[user].push(probNum);
     }
     // console.log(org);
-    
-    fs.writeFile(path, JSON.stringify(org), (err)=>
-    {
+
+    fs.writeFile(path, JSON.stringify(org), (err) => {
         console.log(err);
     });
 }
 
 router.post('/submitAnswer', (req, res, next) => {
     let probNum = req.body.probNum;
-    let yourAnswer = parseInt(req.body.answer);
+    let yourAnswer = req.body.answer;
     // console.log(probNum);
     // console.log(yourAnswer);
     if (!req.session.logined) {
         res.redirect('/');
     }
     else {
-        if (!canShow(probNum))
-        {
+        if (!canShow(probNum)) {
             res.send("incorrect");
             return;
         }
         // res.send("correct");
         // console.log(yourAnswer);
         // console.log(probSet[probNum].answer);
-        if ((probNum in probSet) && yourAnswer === probSet[probNum].answer) {
+        if ((probNum in probSet) && String(yourAnswer) === String(probSet[probNum].answer)) {
             // console.log("correct!!");
-            
-            if (! (req.session.user_id in solvedSet))
-            {
+
+            if (!(req.session.user_id in solvedSet)) {
                 solvedSet[req.session.user_id] = [];
             }
             let is_first = false;
             if (!Array.isArray(solvedSet[req.session.user_id]))
                 solvedSet[req.session.user_id] = [];
-            if (!solvedSet[req.session.user_id].find(y=>parseInt(y)===parseInt(probNum)))
-            {
+            if (!solvedSet[req.session.user_id].find(y => parseInt(y) === parseInt(probNum))) {
                 solvedSet[req.session.user_id].push(probNum);
 
                 is_first = true;
@@ -164,13 +231,12 @@ router.post('/submitAnswer', (req, res, next) => {
             res.send("correct");
 
             let con = problemToContest(probNum);
-            
+
             console.log("let's update contestScoreboard");
-            console.log(con);
-            console.log(new Date());
-            console.log(contestSet[con].endTime);
-            if (con && new Date() < new Date(contestSet[con].endTime) && is_first)
-            {
+            // console.log(con);
+            // console.log(new Date());
+            // console.log(contestSet[con].endTime);
+            if (con && new Date() < new Date(contestSet[con].endTime) && is_first) {
                 // console.log("inside if");
                 updateScoreBoard(con, req.session.user_id, probNum);
             }
@@ -181,24 +247,20 @@ router.post('/submitAnswer', (req, res, next) => {
         }
     }
 });
-router.get('/register', (req, res, next)=>
-{
+router.get('/register', (req, res, next) => {
     res.render('register');
 });
-router.post('/registerInfo', (req, res, next)=>
-{
+router.post('/registerInfo', (req, res, next) => {
     let id = req.body.id;
     let pw = req.body.pw;
     // console.log(id);
     // console.log(pw);
-    if (id in idSet)
-    {
+    if (id in idSet) {
         res.write("<script>alert('already exist id!')</script>");
         res.write("<script>history.back()</script>");
         return;
     }
-    else
-    {
+    else {
         // console.log(id);
         // console.log(pw);
         idSet[id] = {};
@@ -211,7 +273,7 @@ router.post('/registerInfo', (req, res, next)=>
         fs.writeFileSync("user.json", JSON.stringify(idSet));
         // 
         // res.write("<script>window.location.href='/'</script>");
-        
+
     }
 });
 router.get('/getDescription', (req, res, next) => {
@@ -222,13 +284,11 @@ router.get('/getDescription', (req, res, next) => {
         res.send("incorrect problem number");
     }
     else {
-        
-        if (!canShow(probNum))
-        {
+
+        if (!canShow(probNum)) {
             res.send("?");
         }
-        else
-        {
+        else {
             res.send(probSet[probNum].description);
         }
         // res.write
@@ -244,19 +304,16 @@ router.get('/problem', (req, res, next) => {
         let probNum = req.query.probNum;
         let probName = probSet[probNum].name;
         let probDesc = probSet[probNum].description;
-        if (!(req.session.user_id in solvedSet))
-        {
+        if (!(req.session.user_id in solvedSet)) {
             solvedSet[req.session.user_id] = [];
         }
-        if (!Array.isArray(solvedSet[req.session.user_id]))
-        {
+        if (!Array.isArray(solvedSet[req.session.user_id])) {
             solvedSet[req.session.user_id] = [];
         }
         let isSolved = solvedSet[req.session.user_id].find(e => e === probNum);
         let initColor = isSolved ? "success" : "secondary";
         let solvedTxt = isSolved ? "solved" : "unsolved";
-        if (!canShow(probNum))
-        {
+        if (!canShow(probNum)) {
             res.write("<script>alert('contest not start!')</script>");
             res.write("<script>history.back()</script>");
             return;
