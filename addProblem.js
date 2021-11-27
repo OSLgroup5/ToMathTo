@@ -1,4 +1,4 @@
-//user에 의해 문제가 추가될 수 있는 알고리즘(변경이 필요한 요소: req obj, access obj의 숫자값, G obj, problems obj)
+//user에 의해 문제가 추가될 수 있는 알고리즘(변경이 필요한 요소: 'req.session.user_id', 'access' obj의 숫자값, 'G' obj, 'problems' obj, 'input' obj의 id값들)
 
 //req.session.user_id는 현재 로그인 중인 유저의 아이디라고 가정
 
