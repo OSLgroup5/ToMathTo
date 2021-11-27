@@ -42,39 +42,39 @@
         "answer": "8"
     },
     "7": {
-        "name": "",
-        "description": "",
-        "area": "",
-        "rank": "",
-        "answer": ""
+        "name": "Test Your IQ",
+        "description": "\\( \\square \\)안에 들어갈 값은? <br><br>973, 189, \\( \\square \\), 14, 4",
+        "area": "IQ",
+        "rank": "silver",
+        "answer": "72"
     },
     "8": {
-        "name": "",
-        "description": "",
-        "area": "",
-        "rank": "",
-        "answer": ""
+        "name": "Nonsense",
+        "description": "\\( \\alpha \\)에 들어갈 값은? <br><br>\\( 2+2+2+2+2 \\) <br>\\( 2+2+2+2+2 )\\ <br>\\(2+2\\times0+2=\\alpha \\)",
+        "area": "bronze",
+        "rank": "Nonsense",
+        "answer": "60"
     },
     "9": {
-        "name": "",
-        "description": "",
-        "area": "",
-        "rank": "",
-        "answer": ""
+        "name": "Fraction Sequence",
+        "description": "For a positive integer n, let <br>\\( f(n)=\\frac{1}{1\\cdot 2}+\\frac{1}{2\\cdot 3}+\\cdots +\\frac{1}{n\\cdot (n+1)} \\) <br>Comput \\( f(2)\\times100 \\)",
+        "area": "sequence",
+        "rank": "silver",
+        "answer": "75"
     },
     "10": {
-        "name": "",
-        "description": "",
-        "area": "",
-        "rank": "",
-        "answer": ""
+        "name": "True or False?",
+        "description": "Determine whether the following argument is valid. Write 'T' if the argument is valid and 'F' otherwise. <br>\\( \\exists x(x&gt1\\rightarrow x^{2}&ltx) \\), the domain is \\( \\mathbb{R} \\)",
+        "area": "proposition",
+        "rank": "silver",
+        "answer": "T"
     },
     "11": {
-        "name": "",
-        "description": "",
-        "area": "",
-        "rank": "",
-        "answer": ""
+        "name": "사건 발생",
+        "description": "두 사건 (\\ A \\), (\\ B \\)에 대하여 <br>(\\ P(B\\mid A)=\\frac{1}{4}, P(A\\mid B)=\\frac{1}{3}, P(A)+P(B)=\\frac{7}{10} \\) <br>일 때, (\\ P(A\\cap B) \\)에 100을 곱한 값은?",
+        "area": "probability",
+        "rank": "bronze",
+        "answer": "10"
     },
     "12": {
         "name": "",
