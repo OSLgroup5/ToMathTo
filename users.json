@@ -1,0 +1,4 @@
+{
+    "aaa": { "password": "bbb", "gunhan": 3, "solved": ["1", "2"] },
+    "fff": { "password": "fff", "gunhan": 1, "solved": [] }
+}
