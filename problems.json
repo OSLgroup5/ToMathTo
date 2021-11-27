@@ -77,25 +77,25 @@
         "answer": "10"
     },
     "12": {
-        "name": "",
-        "description": "",
-        "area": "",
-        "rank": "",
-        "answer": ""
+        "name": "Test Your Limitation.. and Fraction?",
+        "description": "(\\ \\lim_{n \\to \\infty }\\frac{1}{\\sqrt{4n^{2}+2n+1}-2n} \\)의 값은?",
+        "area": "calculus",
+        "rank": "silver",
+        "answer": "2"
     },
     "13": {
-        "name": "",
-        "description": "",
-        "area": "",
-        "rank": "",
-        "answer": ""
+        "name": "You Can Be MENSA, maybe",
+        "description": "(\\ \\alpha \\)에 들어갈 숫자는? <br>(\\ 5+1=46 \\) <br>(\\ 6+4=210 \\) <br>(\\ 8+7=115 \\) <br>(\\ 7+1=\\alpha \\)",
+        "area": "IQ",
+        "rank": "silver",
+        "answer": "68"
     },
     "14": {
-        "name": "",
-        "description": "",
-        "area": "",
-        "rank": "",
-        "answer": ""
+        "name": "Star in My Mind",
+        "description": "(\\ \\alpha \\)에 들어갈 숫자는? <br>(\\ 2\\bigstar 3=9 \\) <br>(\\ 5\\bigstar 3=18 \\) <br>(\\ 6\\bigstar 4=30 \\) <br>(\\ 7\\bigstar 4=\\alpha \\)",
+        "area": "IQ",
+        "rank": "gold",
+        "answer": "34"
     },
     "15": {
         "name": "",
