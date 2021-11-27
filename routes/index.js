@@ -225,6 +225,7 @@ function updateScoreBoard(con, user, probNum) {
 router.post('/submitAnswer', (req, res, next) => {
     let probNum = req.body.probNum;
     let yourAnswer = req.body.answer;
+
     // console.log(probNum);
     // console.log(yourAnswer);
     if (!req.session.logined) {
@@ -238,6 +239,8 @@ router.post('/submitAnswer', (req, res, next) => {
         // res.send("correct");
         // console.log(yourAnswer);
         // console.log(probSet[probNum].answer);
+        console.log(yourAnswer);
+        console.log(probSet[probNum].answer);
         if ((probNum in probSet) && String(yourAnswer) === String(probSet[probNum].answer)) {
             // console.log("correct!!");
 
@@ -343,9 +346,9 @@ router.get('/problem', (req, res, next) => {
             res.write("<script>history.back()</script>");
             return;
         }
-        probDesc = probDesc.replaceAll("\\", "\\\\");
+        // probDesc = probDesc.replaceAll("\\", "\\\\");
 
-
+        console.log(probDesc);
         console.log(probNum);
         // console.log(probDesc);
         // res.render("problem");
@@ -353,6 +356,15 @@ router.get('/problem', (req, res, next) => {
         ///////////////////////
         // console.log(req.query.probNum);
         // res.render('problem');
+        res.render('problemDescription.ejs', {
+            session:req.session, 
+            "probNum":probNum, 
+            "probName": probName,
+            "probDesc":probDesc,
+            "initColor":initColor,
+            "solvedTxt":solvedTxt,
+        });
+        return;
         var output = `<!doctype html>
         <html lang="en">
         

@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>Dashboard | Klorofil - Free Bootstrap Dashboard Template</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<!-- VENDOR CSS -->
+	<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
+	<link rel="stylesheet" href="assets/vendor/chartist/css/chartist-custom.css">
+	<!-- MAIN CSS -->
+	<link rel="stylesheet" href="assets/css/main.css">
+	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
+	<link rel="stylesheet" href="assets/css/demo.css">
+	<!-- GOOGLE FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+	<!-- ICONS -->
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+</head>
+
+<body>
+    
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
+	<!-- WRAPPER -->
+	<div id="wrapper">
+		<!-- NAVBAR -->
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="brand">
+				<a href="/"><img src="assets/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
+			</div>
+			<div class="container-fluid">
+				<div class="navbar-btn">
+					<button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
+				</div>
+				<form class="navbar-form navbar-left">
+					<div class="input-group">
+						<input type="text" value="" class="form-control" placeholder="Search dashboard...">
+						<span class="input-group-btn"><button type="button" class="btn btn-primary">Go</button></span>
+					</div>
+				</form>
+				<!--div class="navbar-btn navbar-btn-right">
+					<a class="btn btn-success update-pro" href="https://www.themeineed.com/downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
+				</div-->
+				<div id="navbar-menu">
+					<ul class="nav navbar-nav navbar-right">
+                        <% if (session.logined) { %>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span><%= session.user_id %> </span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
+                                    <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
+                                    <li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
+                                    <li><a href="/logout"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+                                </ul>
+                            </li>
+                        <% } %>
+						
+						<!-- <li>
+							<a class="update-pro" href="https://www.themeineed.com/downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
+						</li> -->
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- END NAVBAR -->
+		<!-- LEFT SIDEBAR -->
+		<div id="sidebar-nav" class="sidebar">
+			<div class="sidebar-scroll">
+				<nav>
+					<ul class="nav">
+						<li><a href="/" class="active"><i class="lnr lnr-home"></i> <span>Home</span></a></li>
+						<li><a href="problems" class=""><i class="lnr lnr-code"></i> <span>Problems</span></a></li>
+						<li><a href="contest" class=""><i class="lnr lnr-chart-bars"></i> <span>contest</span></a></li>
+						<!--li><a href="settings.html" class=""><i class="lnr lnr-cog"></i> <span>Settings</span></a></li-->
+						<li><a href="notifications.html" class=""><i class="lnr lnr-alarm"></i> <span>Notifications</span></a></li>
+						<li>
+							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>My Page</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<div id="subPages" class="collapse ">
+								<ul class="nav">
+									<li><a href="page-profile.html" class="">Profile</a></li>
+                                    <% if (!session.logined) { %>
+                                        <li><a href="page-login.html" class="">Login</a></li>
+                                    <% } %>
+								</ul>
+							</div>
+						</li>
+						<!--li><a href="tables.html" class=""><i class="lnr lnr-dice"></i> <span>Tables</span></a></li>
+						<li><a href="typography.html" class=""><i class="lnr lnr-text-format"></i> <span>Typography</span></a></li>
+						<li><a href="icons.html" class=""><i class="lnr lnr-linearicons"></i> <span>Icons</span></a></li-->
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<!-- END LEFT SIDEBAR -->
+		<!-- MAIN -->
+		<div class="main">
+			<!-- MAIN CONTENT -->
+			<div class="main-content">
+				<div class="container-fluid">
+					<!-- OVERVIEW -->
+					<div class="panel panel-headline">
+						<div class="panel-heading">
+							<h3 class="panel-title"> problem <%= probNum %> <br><%= probName %> </h3>
+                            <div id = "result">
+                                <div type="button" class="right badge bg-<%=initColor%> text-wrap" style="width: 11rem;height: 2.9rem;font-size: 1.3rem; border-radius: 2px; border: 2px transparent; vertical-align: middle; display: table-cell;box-shadow: 0px 1px 2px 0 rgb(0 0 0 / 20%);padding: 0;text-align: center;
+                                    line-height: 2.9rem;
+                                "> <%= solvedTxt %>  </div>
+                            </div>div>
+                            <!-- <button type="button" class="btn btn-lg btn-primary" disabled="disabled">Primary button</button> -->
+						</div>
+					</div>
+                    <div class="panel panel-body">
+                        <div id="jax">
+                            <%= probDesc %> 
+                        </div>
+                    </div>
+                    <div class="panel panel-footer" style="display: flex;">
+                        
+                        <input type="text" class="form-control" id="answer" placeholder="answer" style="width:20rem" name="answer">
+                        
+                        <button class="btn btn-primary btn-sm btn-block" style="width: 10rem; margin-left: 5px;" id="submit">submit</button>
+                    </div>
+					<!-- END OVERVIEW -->
+					
+				</div>
+			</div>
+			<!-- END MAIN CONTENT -->
+		</div>
+		<!-- END MAIN -->
+		<div class="clearfix"></div>
+		<footer>
+			<div class="container-fluid">
+				<p class="copyright">Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
+</p>
+			</div>
+		</footer>
+	</div>
+	<!-- END WRAPPER -->
+	<!-- Javascript -->
+	<script src="assets/vendor/jquery/jquery.min.js"></script>
+	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+	<script src="assets/vendor/chartist/js/chartist.min.js"></script>
+	<script src="assets/scripts/klorofil-common.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML&delayStartupUntil=configured"></script>
+	<script>
+        // window.MathJax = {
+        //     options: {
+        //         skipHtmlTags: [            //  HTML tags that won't be searched for math
+        //             'script', 'noscript', 'style', 'textarea', 'pre',
+        //             'code', 'annotation', 'annotation-xml'
+        //         ],
+        //         includeHtmlTags: {         //  HTML tags that can appear within math
+        //             br: '\n', wbr: '', '#comment': ''
+        //         },
+        //         ignoreHtmlClass: 'tex2jax_ignore',    //  class that marks tags not to search
+        //         processHtmlClass: 'tex2jax_process',  //  class that marks tags that should be searched
+        //         compileError: function (doc, math, err) { doc.compileError(math, err) },
+        //         typesetError: function (doc, math, err) { doc.typesetError(math, err) },
+        //         // renderActions: { ...}
+        //     }
+        // };
+        MathJax.Hub.Configured();
+
+        document.querySelector('#submit').addEventListener("click", ()=>
+            {
+                // document.querySelector("#result").innerHTML = '<div class="badge bg-warning text-wrap" style="width: 6rem;"> wait please... </div>';
+                let rr = document.querySelector("#result");
+                rr.innerHTML = `<div id="result" type="button" class="right badge bg-warning text-wrap" style="width: 11rem;height: 2.9rem;font-size: 1.3rem; border-radius: 2px; border: 2px transparent; vertical-align: middle; display: table-cell;box-shadow: 0px 1px 2px 0 rgb(0 0 0 / 20%);padding: 0;text-align: center;
+                                line-height: 2.9rem;
+                            "> wait...  </div>`;
+                $.ajax({
+                    url: "/submitAnswer", 
+                    type: "post",
+                    data: {answer: document.querySelector("#answer").value, probNum: `<%=probNum%>`},
+                    success:(data)=>
+                    {
+                        // console.log(data);
+                        let x = document.querySelector("#result");
+                        if (data === "correct")
+                        {
+                            // x.innerHTML = '<div class="badge bg-primary text-wrap" style="width: 6rem;"> Success! </div>';
+                            x.innerHTML = `<div id="result" type="button" class="right badge bg-success text-wrap" style="width: 11rem;height: 2.9rem;font-size: 1.3rem; border-radius: 2px; border: 2px transparent; vertical-align: middle; display: table-cell;box-shadow: 0px 1px 2px 0 rgb(0 0 0 / 20%);padding: 0;text-align: center;
+                                line-height: 2.9rem;
+                            "> Success!  </div>`;
+                        }
+                        else
+                        {
+                            // x.innerHTML = '<div class="badge bg-danger text-wrap" style="width: 6rem;"> Wrong! </div>';
+                            x.innerHTML = `<div id="result" type="button" class="right badge bg-danger text-wrap" style="width: 11rem;height: 2.9rem;font-size: 1.3rem; border-radius: 2px; border: 2px transparent; vertical-align: middle; display: table-cell;box-shadow: 0px 1px 2px 0 rgb(0 0 0 / 20%);padding: 0;text-align: center;
+                                line-height: 2.9rem;
+                            "> Wrong!  </div>`;
+                        }
+                    }
+                });
+            });
+	</script>
+</body>
+
+</html>
