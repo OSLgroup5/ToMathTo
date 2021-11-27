@@ -72,8 +72,8 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="/" class="active"><i class="lnr lnr-home"></i> <span>Home</span></a></li>
-						<li><a href="problems" class=""><i class="lnr lnr-code"></i> <span>Problems</span></a></li>
+						<li><a href="/" class=""><i class="lnr lnr-home"></i> <span>Home</span></a></li>
+						<li><a href="problems" class="active"><i class="lnr lnr-code"></i> <span>Problems</span></a></li>
 						<li><a href="contest" class=""><i class="lnr lnr-chart-bars"></i> <span>contest</span></a></li>
 						<!--li><a href="settings.html" class=""><i class="lnr lnr-cog"></i> <span>Settings</span></a></li-->
 						<li><a href="notifications.html" class=""><i class="lnr lnr-alarm"></i> <span>Notifications</span></a></li>
@@ -109,7 +109,7 @@
                                 <div type="button" class="right badge bg-<%=initColor%> text-wrap" style="width: 11rem;height: 2.9rem;font-size: 1.3rem; border-radius: 2px; border: 2px transparent; vertical-align: middle; display: table-cell;box-shadow: 0px 1px 2px 0 rgb(0 0 0 / 20%);padding: 0;text-align: center;
                                     line-height: 2.9rem;
                                 "> <%= solvedTxt %>  </div>
-                            </div>div>
+                            </div>
                             <!-- <button type="button" class="btn btn-lg btn-primary" disabled="disabled">Primary button</button> -->
 						</div>
 					</div>
@@ -165,7 +165,12 @@
         //         // renderActions: { ...}
         //     }
         // };
-        MathJax.Hub.Configured();
+            $.ajax({
+                    url: "/getDescription",
+                    type: "get",
+                    data: { probNum: "<%=probNum%>" },
+                    success: (data) => { document.querySelector("#jax").innerHTML = data; MathJax.Hub.Configured(); }
+                });
 
         document.querySelector('#submit').addEventListener("click", ()=>
             {
