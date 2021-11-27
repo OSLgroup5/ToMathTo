@@ -8,16 +8,17 @@ let solvedSet = JSON.parse(fs.readFileSync('user_solved.json'), 'utf8');
 let contestSet = JSON.parse(fs.readFileSync('contest.json'), 'utf8');
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    if ("logined" in req.session) {
-        res.redirect('/logined');
-    }
-    else {
-        res.render('index', { session: req.session });
-    }
+    // if ("logined" in req.session) {
+    //     res.redirect('/logined');
+    // }
+    // else {
+    //     res.render('index', { session: req.session });
+    // }
+    res.render('index');
 });
 
 router.post('/login', (req, res, next) => {
-
+    // console.log(req);
     console.log(req.body.id);
     console.log(req.body.pw);
     if (req.body.id in idSet && idSet[req.body.id].password === req.body.pw) {
@@ -31,13 +32,19 @@ router.post('/login', (req, res, next) => {
         //     // res.render("logined", {session: req.session});
         // });
 
-        res.send("good");
+        // res.send("good");
+        res.redirect('/');
     }
     else {
-        // res.write('<script>alert("incorrect id or pw")</script>');
-        // res.write("<script>window.location=\"../\"</script>");
-        res.send("bad");
+        res.write('<script>alert("incorrect id or pw")</script>');
+        res.write("<script>window.location=\"/\"</script>");
+        // res.send("bad");
     }
+});
+router.get('/login', (req, res, next)=>
+{
+    // console.log(req);
+    // res.send("asdf");
 });
 router.post('/logout', (req, res, next) => {
     req.session.destroy();
