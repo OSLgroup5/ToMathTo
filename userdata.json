@@ -1,8 +1,0 @@
-{
-  "userId1": {
-    "solved": ["1", "3", "4"],
-    "ranking": "gold"
-  },
-  "userId2": { "solved": [], "ranking": "Iron" },
-  "userId3": { "solved": [], "ranking": "Iron" }
-}
