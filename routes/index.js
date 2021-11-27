@@ -37,7 +37,7 @@ router.post('/login', (req, res, next) => {
     }
     else {
         res.write('<script>alert("incorrect id or pw")</script>');
-        res.write("<script>window.location=\"/\"</script>");
+        res.write("<script>window.location=\"/page-login.html\"</script>");
         // res.send("bad");
     }
 });
