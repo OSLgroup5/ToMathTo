@@ -62,7 +62,7 @@ This project has adopted the [Microsoft Open Source Code of Conduct.](https://op
 contest기능
 
 > - contest가 진행중인 시간에만 대회 페이지, 대회에 포함된 문제 페이지에 접속 가능함
-> - 대회 진행중에 문제를 풀면 자동으로 scoreboard가 갱신됨.
+> - 대회 진행중에 문제를 풀면 페이지 새로고침 없이 자동으로 scoreboard가 갱신됨.
 > - 한문제라도 대회 진행중에 맞춘 사람은 자동으로 scoreboard에 올라감
 > - 동일한 문제에 대해 여러번 푼다고 점수가 오르는건 아님
 > - 스코어 보드는 맞은 문제수가 많은 순으로 정렬됨.
