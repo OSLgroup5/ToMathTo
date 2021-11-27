@@ -48,7 +48,7 @@ you can also read [CODE_OF_CONDUCT.md](https://github.com/OSLgroup5/RedPen/blob/
 
 ---
 
-## detail features (all features are implemented using ***only pure javascript and html***)
+## detail features
 
 로그인, 로그아웃, 회원가입 기능
 
