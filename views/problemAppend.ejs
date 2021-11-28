@@ -74,10 +74,12 @@
                                 </ul>
                             </li>
                             <% } else { %>
-                                <div class="bottom brand" style="margin-left: 10px;">
-                                    <span class="helper-text"><i class="fa fa-address-book"></i> <a href="register">Sign UP!</a></span>
-                                </div>
-                                <% } %> 
+                            <div class="bottom brand" style="margin-left: 10px">
+                                <span class="helper-text"
+                                    ><i class="fa fa-address-book"></i> <a href="register">Sign UP!</a></span
+                                >
+                            </div>
+                            <% } %>
 
                             <!-- <li>
 							<a class="update-pro" href="https://www.themeineed.com/downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
@@ -137,11 +139,11 @@
                         <!-- OVERVIEW -->
                         <div class="panel panel-headline">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Problem Uploading Tab</h3>
+                                <h2 class="panel-title">Problem Uploading Tab</h2>
                                 <div id="result">
                                     <div
                                         type="button"
-                                        class="right badge bg-primary text-wrap"
+                                        class="right btn btn-primary text-wrap"
                                         style="
                                             width: 11rem;
                                             height: 2.9rem;
@@ -163,45 +165,45 @@
                                 <!-- <button type="button" class="btn btn-lg btn-primary" disabled="disabled">Primary button</button> -->
                             </div>
                         </div>
-                        <div class="panel panel-body no-padding" id="input">
+                        <div class="panel panel-body no-padding mb-2 mt-2" id="input">
                             <input
                                 type="text"
                                 class="form-control"
                                 id="input-title"
-                                placeholder="problem name"
-                                style="width: 20rem"
+                                placeholder="Enter a problem name"
+                                style="width: 60rem"
                                 name="title"
                             />
                             <input
                                 type="text"
                                 class="form-control"
                                 id="input-description"
-                                placeholder="problem description"
-                                style="width: 20rem"
+                                placeholder="Enter a problem description"
+                                style="width: 60rem"
                                 name="description"
                             />
                             <input
                                 type="text"
                                 class="form-control"
                                 id="input-area"
-                                placeholder="problem area"
-                                style="width: 20rem"
+                                placeholder="Enter a problem area"
+                                style="width: 60rem"
                                 name="area"
                             />
                             <input
                                 type="text"
                                 class="form-control"
                                 id="input-rank"
-                                placeholder="problem rank"
-                                style="width: 20rem"
+                                placeholder="Enter a problem rank"
+                                style="width: 60rem"
                                 name="rank"
                             />
                             <input
                                 type="text"
                                 class="form-control"
                                 id="input-answer"
-                                placeholder="problem answer"
-                                style="width: 20rem"
+                                placeholder="Enter a problem answer"
+                                style="width: 60rem"
                                 name="answer"
                             />
                         </div>
@@ -241,8 +243,7 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML&delayStartupUntil=configured"
         ></script>
         <script>
-            document.querySelector('#add').addEventListener('click', ()=>
-            {
+            document.querySelector("#add").addEventListener("click", () => {
                 // let title = document.querySelector('#input-title').value;
                 // let description = document.querySelector('#input-description').value;
                 // let area = document.querySelector('#input-area').value;
@@ -266,17 +267,15 @@
                 $.ajax({
                     url: "/problemMakingData",
                     type: "post",
-                    data:{
-                        title:p_title.value,
+                    data: {
+                        title: p_title.value,
                         description: p_description.value,
                         area: p_area.value,
                         rank: p_rank.value,
-                        answer: p_answer.value
+                        answer: p_answer.value,
                     },
-                    success: (data)=>
-                    {
-                        if (data === "success!")
-                        {
+                    success: (data) => {
+                        if (data === "success!") {
                             p_title.value = "";
                             p_description.value = "";
                             p_area.value = "";
@@ -284,7 +283,7 @@
                             p_answer.value = "";
                         }
                         alert(data);
-                    }
+                    },
                 });
             });
         </script>
