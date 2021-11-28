@@ -1,1 +1,142 @@
-{"1":{"name":"001 Dice and Coin","description":"한 개의 주사위를 5번 던질 때 홀수의 눈이 나오는 횟수를  \\( a \\)라 하고, 한 개의 동전을 4번 던질 때 앞면이 나오는 횟수를 \\( b \\)라 하자. \\( a-b \\)의 값이 3일 확률을 \\( \\frac{q}{p} \\)라 할 때, \\( p+q \\)의 값을 구하시오. (단, \\( p \\)와 \\( q \\)는 서로소인 자연수이다.)","area":"probability","rank":"gold","answer":137},"2":{"name":"002 The Sin Squre","description":"최고차항의 계수가 1인 삼차함수 \\( f(x) \\)에 대하여 실수 전체의 집합에서 정의된 함수 \\( g(x)=f(sin^{2}\\pi x) \\)가 다음 조건을 만족시킨다.<br><br>(가) \\(0&ltx&lt1\\)에서 함수 \\( g(x) \\)가 극대가 되는 \\( x \\)의 개수가 3이고, 이때 극댓값이 모두 동일하다.<br>(나) 함수 \\( g(x) \\)의 최댓값은 \\( \\frac{1}{2} \\)이고 최솟값은 0이다.<br><br>\\( f(2)=a+b\\sqrt{2} \\)일 때, \\( a^{2}+b^{2} \\)의 값을 구하시오. (단 a와 b는 유리수이다.)","area":"calculus","rank":"platinum","answer":29},"3":{"name":"003 X, Y and XY?","description":"Compute the coefficient of \\( x^{3}y^{4} \\) in the following expansion.\\( (\\sqrt{x}+\\sqrt{xy}+\\sqrt{y})^{2}(x+y)^{6} \\)<br>","area":"discrete mathmatics","rank":"bronze","answer":35},"4":{"name":"004 Test Your Limitation","description":"\\( (\\lim_{n \\to \\infty }\\frac{1}{n}\\sum_{k= 1}^{n}\\sqrt{\\frac{3n}{3n+k}} + 6)*\\sqrt{3} \\)의 값은?","area":"calculus","rank":"gold","answer":"12"},"5":{"name":"005 Test Your Limitation2","description":"실수 \\( a \\)에 대하여 함수 \\( f(x) \\)를 <br><br>\\( f(x)=\\lim_{n \\to \\infty }\\frac{(a-2)^{2n-1}+2x}{3x^{2n}+1} \\) <br><br>라 하자. \\( (f \\circ f)(1) = \\frac{5}{4} \\)가 되도록 하는 모든 a의 값의 합의 두배는?","area":"calculus","rank":"platinum","answer":"15"},"6":{"name":"006 The Derivative","description":"함수 \\( f(x) = \\frac{x^{2} - 2x - 6}{x-1} \\)에 대하여 \\( f{}'(0) \\)의 값을 구하시오.","area":"calculus","rank":"bronze","answer":"8"},"7":{"name":"","description":"","area":"","rank":"","answer":""},"8":{"name":"","description":"","area":"","rank":"","answer":""},"9":{"name":"","description":"","area":"","rank":"","answer":""},"10":{"name":"","description":"","area":"","rank":"","answer":""},"11":{"name":"","description":"","area":"","rank":"","answer":""},"12":{"name":"","description":"","area":"","rank":"","answer":""},"13":{"name":"","description":"","area":"","rank":"","answer":""},"14":{"name":"","description":"","area":"","rank":"","answer":""},"15":{"name":"","description":"","area":"","rank":"","answer":""},"16":{"name":"","description":"","area":"","rank":"","answer":""},"17":{"name":"","description":"","area":"","rank":"","answer":""},"18":{"name":"","description":"","area":"","rank":"","answer":""},"19":{"name":"","description":"","area":"","rank":"","answer":""},"20":{"name":"","description":"","area":"","rank":"","answer":""},"21":{"name":"f","description":"f","area":"f","rank":"f","answer":"f"},"22":{"name":"test problem","description":"test problem이비당","area":"칼클러스","rank":"몰루","answer":"123"},"23":{"name":"테스트 문제","description":"안녕","area":"하세요","rank":"응앵","answer":"test"},"24":{"name":"고양이가 울 때 내는 소리는?","description":"고양이가 울 때 내는 소리는?","area":"동물","rank":"bronze","answer":"냐옹"},"25":{"name":"답이 숫자임","description":"응","area":"앵","rank":"웅","answer":"엉"},"26":{"name":"읅얽","description":"읅억","area":"윽억","rank":"욹","answer":"12321"},"27":{"name":"답은 01년생 입니다","description":"답은 01년생!","area":"01","rank":".","answer":"01년생"}}
+{
+    "1": {
+        "name": "Dice and Coin",
+        "description": "한 개의 주사위를 5번 던질 때 홀수의 눈이 나오는 횟수를  \\( a \\)라 하고, 한 개의 동전을 4번 던질 때 앞면이 나오는 횟수를 \\( b \\)라 하자. \\( a-b \\)의 값이 3일 확률을 \\( \\frac{q}{p} \\)라 할 때, \\( p+q \\)의 값을 구하시오. (단, \\( p \\)와 \\( q \\)는 서로소인 자연수이다.)",
+        "area": "probability",
+        "rank": "gold",
+        "answer": 137
+    },
+    "2": {
+        "name": "The Sin Squre",
+        "description": "최고차항의 계수가 1인 삼차함수 \\( f(x) \\)에 대하여 실수 전체의 집합에서 정의된 함수 \\( g(x)=f(sin^{2}\\pi x) \\)가 다음 조건을 만족시킨다.<br><br>(가) \\(0&ltx&lt1\\)에서 함수 \\( g(x) \\)가 극대가 되는 \\( x \\)의 개수가 3이고, 이때 극댓값이 모두 동일하다.<br>(나) 함수 \\( g(x) \\)의 최댓값은 \\( \\frac{1}{2} \\)이고 최솟값은 0이다.<br><br>\\( f(2)=a+b\\sqrt{2} \\)일 때, \\( a^{2}+b^{2} \\)의 값을 구하시오. (단 a와 b는 유리수이다.)",
+        "area": "calculus",
+        "rank": "platinum",
+        "answer": 29
+    },
+    "3": {
+        "name": "X, Y and XY?",
+        "description": "Compute the coefficient of \\( x^{3}y^{4} \\) in the following expansion.<br>\\( (\\sqrt{x}+\\sqrt{xy}+\\sqrt{y})^{2}(x+y)^{6} \\)<br>",
+        "area": "discrete mathmatics",
+        "rank": "bronze",
+        "answer": 35
+    },
+    "4": {
+        "name": "Test Your Limitation",
+        "description": "\\[ (\\lim_{n \\to \\infty }\\frac{1}{n}\\sum_{k= 1}^{n}\\sqrt{\\frac{3n}{3n+k}} + 6)*\\sqrt{3} \\]의 값은?",
+        "area": "calculus",
+        "rank": "gold",
+        "answer": "12"
+    },
+    "5": {
+        "name": "Test Your Limitation2",
+        "description": "실수 \\( a \\)에 대하여 함수 \\( f(x) \\)를 <br><br>\\[ f(x)=\\lim_{n \\to \\infty }\\frac{(a-2)^{2n-1}+2x}{3x^{2n}+1} \\] <br><br>라 하자. \\( (f \\circ f)(1) = \\frac{5}{4} \\)가 되도록 하는 모든 a의 값의 합의 두배는?",
+        "area": "calculus",
+        "rank": "platinum",
+        "answer": "15"
+    },
+    "6": {
+        "name": "The Derivative",
+        "description": "함수 \\( f(x) = \\frac{x^{2} - 2x - 6}{x-1} \\)에 대하여 \\( f{}'(0) \\)의 값을 구하시오.",
+        "area": "calculus",
+        "rank": "bronze",
+        "answer": "8"
+    },
+    "7": {
+        "name": "Test Your IQ",
+        "description": "\\( \\square \\) 안에 들어갈 값은? <br><br>973, 189, \\( \\square \\), 14, 4",
+        "area": "IQ",
+        "rank": "silver",
+        "answer": "72"
+    },
+    "8": {
+        "name": "Nonsense",
+        "description": "\\( \\alpha \\)에 들어갈 값은? <br><br>\\( 2+2+2+2+2 \\) <br>\\( 2+2+2+2+2 \\)<br>\\(2+2\\times0+2=\\alpha \\)",
+        "area": "bronze",
+        "rank": "Nonsense",
+        "answer": "60"
+    },
+    "9": {
+        "name": "Fraction Sequence",
+        "description": "For a positive integer n, let <br><br>\\( f(n)=\\frac{1}{1\\cdot 2}+\\frac{1}{2\\cdot 3}+\\cdots +\\frac{1}{n\\cdot (n+1)} \\) <br><br>Compute \\( f(2)\\times100 \\)",
+        "area": "sequence",
+        "rank": "silver",
+        "answer": "75"
+    },
+    "10": {
+        "name": "True or False?",
+        "description": "Determine whether the following argument is valid. Write 'T' if the argument is valid and 'F' otherwise. <br><br>\\( \\exists x(x&gt1\\rightarrow x^{2}&ltx) \\), the domain is \\( \\mathbb{R} \\)",
+        "area": "proposition",
+        "rank": "silver",
+        "answer": "T"
+    },
+    "11": {
+        "name": "사건 발생",
+        "description": "두 사건 \\( A \\), \\( B \\)에 대하여 <br><br>\\( P(B\\mid A)=\\frac{1}{4}, P(A\\mid B)=\\frac{1}{3}, P(A)+P(B)=\\frac{7}{10} \\) <br><br>일 때, \\( P(A\\cap B) \\)에 100을 곱한 값은?",
+        "area": "probability",
+        "rank": "bronze",
+        "answer": "10"
+    },
+    "12": {
+        "name": "Test Your Limitation.. and Fraction?",
+        "description": "\\[ \\lim_{n \\to \\infty }\\frac{1}{\\sqrt{4n^{2}+2n+1}-2n} \\]의 값은?",
+        "area": "calculus",
+        "rank": "silver",
+        "answer": "2"
+    },
+    "13": {
+        "name": "You Can Be MENSA, maybe",
+        "description": "\\( \\alpha \\)에 들어갈 숫자는? <br>\\( 5+1=46 \\) <br>\\( 6+4=210 \\) <br>\\( 8+7=115 \\) <br>\\( 7+1=\\alpha \\)",
+        "area": "IQ",
+        "rank": "silver",
+        "answer": "68"
+    },
+    "14": {
+        "name": "Star in My Mind",
+        "description": "\\( \\alpha \\)에 들어갈 숫자는? <br>\\( 2\\bigstar 3=9 \\) <br>\\( 5\\bigstar 3=18 \\) <br>\\( 6\\bigstar 4=30 \\) <br>\\( 7\\bigstar 4=\\alpha \\)",
+        "area": "IQ",
+        "rank": "gold",
+        "answer": "34"
+    },
+    "15": {
+        "name": "Distance in 2D",
+        "description": "좌표공간의 두 점 \\( \\textup{A}(2,0,1) \\), \\( \\textup{B}(3,2,0) \\)에서 같은 거리에 있는 \\( y \\)축 위의 점의 좌표가 \\( (0,a,0) \\)일 때, \\( a \\)의 값은?",
+        "area": "calculus",
+        "rank": "bronze",
+        "answer": "2"
+    },
+    "16": {
+        "name": "X, X, X and X...",
+        "description": " \\( \\left ( 2x+\\frac{1}{x^{2}} \\right )^{4} \\)의 전개식에서 \\( x \\)의 계수는?",
+        "area": "calculus",
+        "rank": "bronze",
+        "answer": "32"
+    },
+    "17": {
+        "name": "The Moving Point",
+        "description": "좌표평면  위를  움직이는  점  \\( \\textup{P} \\)의  시각  \\( t\\left ( 0&ltt&lt\\frac{\\pi }{2} \\right ) \\)에서의 위치 \\( (x,y) \\)가 <br>\\( x=t+\\textup{sin}t\\textup{cos}t, y=\\textup{tan}t \\) <br>이다.  \\( 0&ltt&lt\\frac{\\pi}{2} \\) 에서  점  \\( \\textup{P} \\)의  속력의  최솟값은?",
+        "area": "calculus",
+        "rank": "silver",
+        "answer": "2"
+    },
+    "18": {
+        "name": "Inflection Point",
+        "description": "곡선 \\( ax^{2}-2\\textup{sin}2x \\)가  변곡점을  갖도록  하는  정수 \\( a \\)의 개수는?",
+        "area": "caculus",
+        "rank": "silver",
+        "answer": "7"
+    },
+    "19": {
+        "name": "Powerful Geometry",
+        "description": "좌표공간에서  두  점 \\( \\textup{A}(3,-3,3) \\), \\( \\textup{B}(-2,7,-2) \\)에  대하여 선분 \\( \\textup{AB} \\)를  포함하고  구 \\( x^{2}+y^{2}+z^{2}=1 \\)에  접하는  두  평면을 \\( \\alpha \\),  \\( \\beta \\)라  하자.  두  평면  \\( \\alpha \\),  \\( \\beta \\)와  구 \\( x^{2}+y^{2}+z^{2}=1 \\)의  접점을 각각  \\( \\textup{C} \\), \\( \\textup{D} \\)라  할  때,  사면체  \\( \\textup{ABCD} \\)의  부피는 \\( \\frac{q}{p}\\sqrt{3} \\)이다. <br>\\( p+q \\)의  값을  구하시오.  (단,  \\( p \\)와  \\( q \\)는  서로소인  자연수이다.)",
+        "area": "geometry",
+        "rank": "platinum",
+        "answer": "29"
+    },
+    "20": {
+        "name": "Only One",
+        "description": "양의  실수  \\( t \\)에  대하여  곡선 \\( y=t^{3}\\textup{ln}(x-t) \\)가 곡선 \\( y=2e^{x-a} \\)과  오직  한  점에서  만나도록  하는  실수 \\( a \\)의 값을 \\( f(t) \\)라  하자. \\(  \\left \\{ f{}'\\left ( \\frac{1}{3} \\right ) \\right \\}^{2} \\)의  값을  구하시오.",
+        "area": "calculus&geometry",
+        "rank": "platinum",
+        "answer": "64"
+    }
+}
