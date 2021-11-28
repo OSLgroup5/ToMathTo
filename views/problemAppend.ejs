@@ -59,7 +59,15 @@
                                     <i class="icon-submenu lnr lnr-chevron-down"></i
                                 ></a>
                                 <ul class="dropdown-menu">
-                                    
+                                    <li>
+                                        <a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a>
+                                    </li>
                                     <li>
                                         <a href="/logout"><i class="lnr lnr-exit"></i> <span>Logout</span></a>
                                     </li>
@@ -87,16 +95,20 @@
                     <nav>
                         <ul class="nav">
                             <li>
-                                <a href="/" class=""><i class="lnr lnr-home"></i> <span>Home</span></a>
+                                <a href="/" class="active"><i class="lnr lnr-home"></i> <span>Home</span></a>
                             </li>
                             <li>
-                                <a href="problems" class="active"><i class="lnr lnr-code"></i> <span>Problems</span></a>
+                                <a href="problems" class=""><i class="lnr lnr-code"></i> <span>Problems</span></a>
                             </li>
                             <li>
                                 <a href="contest" class=""><i class="lnr lnr-chart-bars"></i> <span>contest</span></a>
                             </li>
                             <!--li><a href="settings.html" class=""><i class="lnr lnr-cog"></i> <span>Settings</span></a></li-->
-                            
+                            <li>
+                                <a href="notifications.html" class=""
+                                    ><i class="lnr lnr-alarm"></i> <span>Notifications</span></a
+                                >
+                            </li>
                             <li>
                                 <a href="#subPages" data-toggle="collapse" class="collapsed"
                                     ><i class="lnr lnr-file-empty"></i> <span>My Page</span>
@@ -104,7 +116,7 @@
                                 ></a>
                                 <div id="subPages" class="collapse">
                                     <ul class="nav">
-                                        <li><a href="page-profile" class="">Profile</a></li>
+                                        <li><a href="page-profile.html" class="">Profile</a></li>
                                         <% if (!session.logined) { %>
                                         <li><a href="page-login.html" class="">Login</a></li>
                                         <% } %>
