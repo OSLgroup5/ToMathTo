@@ -179,6 +179,11 @@ router.get('/getProblemList', (req, res, next) => {
     // }
 
     // console.log("getProbList!!!!");
+    let cnt = 987654321;
+    if (!(typeof req.query.cnt == 'undefined')) cnt = req.query.cnt;
+    // console.log(req.body);
+    // console.log(req.query);
+    let nowcnt = 0;
     let sending = {};
     for (x in probSet) {
         let can = true;
@@ -194,7 +199,11 @@ router.get('/getProblemList', (req, res, next) => {
             sending[x] = probSet[x];
             if (!req.session.logined) sending[x].status = -1;
             else sending[x].status = is_solved(req.session.user_id, x);
+
+            nowcnt += 1;
+            if (nowcnt >= cnt) break;
         }
+
     }
     res.send(sending);
 });
