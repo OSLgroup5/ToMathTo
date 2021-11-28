@@ -60,6 +60,9 @@ you can also read [CODE_OF_CONDUCT.md](https://github.com/OSLgroup5/ToMathTo/blo
 > - 회원가입시 id가 중복되면 alert 띄우고 reject.
 > - 문제 페이지, 대회페이지, 문제 제출, 문제 출제 등 각종 기능을 로그인 없이 사용하려하면 reject함
 
+![ToMathToScreen](signup.png)
+![ToMathToScreen](login.png)
+
 ### 문제 풀기 기능
 
 > - MathJax 을 이용한 수식 표현
@@ -67,6 +70,9 @@ you can also read [CODE_OF_CONDUCT.md](https://github.com/OSLgroup5/ToMathTo/blo
 > - 맞았다면 unsolved tag가 solved로 바뀜
 > - 과거에 이미 풀었던 문제는 자동으로 solved로 뜸, 서버 재시작 해도 반영
 > - 만약 해당 문제가 contest에 포함된 문제면 contest에 들어가야지 볼 수 있음
+
+![ToMathToScreen](problem.png)
+![ToMathToScreen](problemList.png)
 
 ### contest기능
 
@@ -76,6 +82,9 @@ you can also read [CODE_OF_CONDUCT.md](https://github.com/OSLgroup5/ToMathTo/blo
 > - 동일한 문제에 대해 여러번 푼다고 점수가 오르는건 아님
 > - 스코어 보드는 맞은 문제수가 많은 순으로 정렬됨.
 
+![ToMathToScreen](contest.png)
+![ToMathToScreen](scoreboard.png)
+
 ### 문제 추가 기능
 
 > - user 의 권한을 총 3가지로 나눔 (user, root, super root)
@@ -84,6 +93,8 @@ you can also read [CODE_OF_CONDUCT.md](https://github.com/OSLgroup5/ToMathTo/blo
 > - problem making page에서는 문제 정보(name, description, area, difficulty, answer)를 입력하여 문제를 추가할 수 있음 (권한 없으면 reject 됨)
 > - problem name이 중복된다면 alert메세지를 띄우고 reject됨
 > - 성공적으로 문제가 추가되면 서버 **재시작 없이** 페이지 새로고침하면 바로 적용됨
+
+![ToMathToScreen](problemMaking.png)
 
 ---
 
