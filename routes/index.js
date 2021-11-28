@@ -29,7 +29,6 @@ router.post('/login', (req, res, next) => {
     console.log(req.body.id);
     console.log(req.body.pw);
     if (req.body.id in idSet && idSet[req.body.id].password === req.body.pw) {
-        
         req.session.user_id = req.body.id;
         req.session.logined = true;
         // req.session.regenerate(()=>
