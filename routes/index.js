@@ -29,7 +29,7 @@ router.post('/login', (req, res, next) => {
     console.log(req.body.id);
     console.log(req.body.pw);
     if (req.body.id in idSet && idSet[req.body.id].password === req.body.pw) {
-
+        
         req.session.user_id = req.body.id;
         req.session.logined = true;
         // req.session.regenerate(()=>
@@ -46,6 +46,17 @@ router.post('/login', (req, res, next) => {
         res.write('<script>alert("incorrect id or pw")</script>');
         res.write("<script>window.location=\"/page-login.html\"</script>");
         // res.send("bad");
+    }
+});
+router.get('/page-profile', (req, res, next)=>
+{
+    if (!req.session.logined)
+    {
+        res.redirect('page-login.html');
+    }
+    else
+    {
+        res.render('page-profile.ejs', {session:req.session});
     }
 });
 router.get('/login', (req, res, next)=>
