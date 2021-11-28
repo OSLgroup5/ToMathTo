@@ -14,7 +14,14 @@ router.get('/', function (req, res, next) {
     // else {
     //     res.render('index', { session: req.session });
     // }
-    res.render('index.ejs', {session:req.session});
+    if (!req.session.logined)
+    {
+        res.render('index.ejs', {session:req.session, gunhan: 0});
+    }
+    else
+    {
+        res.render("index.ejs", {session:req.session, gunhan:idSet[req.session.user_id].gunhan});
+    }
 });
 
 router.post('/login', (req, res, next) => {
@@ -69,14 +76,22 @@ router.get('/problemMake', (req, res, next) => {
         res.redirect('/');
     }
     else {
+        
+        
         let user_id = req.session.user_id;
+        
+        // console.log(user_id, idSet[user_id].gunhan);
+        if (!("gunhan" in idSet[user_id])) 
+        {
+            idSet[user_id].gunhan = 0;
+        }
         if (idSet[user_id].gunhan < 2) {
             res.redirect('/');
 
         }
         else {
             // console.log("hello");
-            res.render('problemMake.html');
+            res.render('problemAppend.ejs', {session:req.session});
         }
     }
 });
@@ -278,6 +293,10 @@ router.post('/submitAnswer', (req, res, next) => {
 router.get('/register', (req, res, next) => {
     res.render('register');
 });
+// router.get('/problemAppend', (req, res, next)=>
+// {
+//     res.render('problemAppend.ejs', {session:req.session});
+// });
 router.post('/registerInfo', (req, res, next) => {
     let id = req.body.id;
     let pw = req.body.pw;

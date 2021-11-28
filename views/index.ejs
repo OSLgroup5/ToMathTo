@@ -100,7 +100,12 @@
 						<li><a href="problems" class=""><i class="lnr lnr-code"></i> <span>Problems</span></a></li>
 						<li><a href="contest" class=""><i class="lnr lnr-chart-bars"></i> <span>contest</span></a></li>
 						<!--li><a href="settings.html" class=""><i class="lnr lnr-cog"></i> <span>Settings</span></a></li-->
-						<li><a href="notifications.html" class=""><i class="lnr lnr-alarm"></i> <span>Notifications</span></a></li>
+						<!-- <li><a href="problemMake" class=""><i class="lnr lnr-chart-bars"><span>Problem</span></i></a></li> -->
+                        <% if (!(typeof gunhan =='undefined') && gunhan >= 1) { %>
+                         
+						    <li><a href="problemMake" class=""><i class="lnr lnr-cloud-sync"></i> <span>problem making</span></a></li>
+                        <% } %>
+                        <li><a href="notifications.html" class=""><i class="lnr lnr-alarm"></i> <span>Notifications</span></a></li>
 						<li>
 							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>My Page</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Dashboard | Klorofil - Free Bootstrap Dashboard Template</title>
+        <title>ToMathTo Mat it tha</title>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
@@ -73,7 +73,11 @@
                                     </li>
                                 </ul>
                             </li>
-                            <% } %>
+                            <% } else { %>
+                                <div class="bottom brand" style="margin-left: 10px;">
+                                    <span class="helper-text"><i class="fa fa-address-book"></i> <a href="register">Sign UP!</a></span>
+                                </div>
+                                <% } %> 
 
                             <!-- <li>
 							<a class="update-pro" href="https://www.themeineed.com/downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
@@ -151,6 +155,7 @@
                                             text-align: center;
                                             line-height: 2.9rem;
                                         "
+                                        id="add"
                                     >
                                         Upload
                                     </div>
@@ -236,62 +241,52 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML&delayStartupUntil=configured"
         ></script>
         <script>
-            // window.MathJax = {
-            //     options: {
-            //         skipHtmlTags: [            //  HTML tags that won't be searched for math
-            //             'script', 'noscript', 'style', 'textarea', 'pre',
-            //             'code', 'annotation', 'annotation-xml'
-            //         ],
-            //         includeHtmlTags: {         //  HTML tags that can appear within math
-            //             br: '\n', wbr: '', '#comment': ''
-            //         },
-            //         ignoreHtmlClass: 'tex2jax_ignore',    //  class that marks tags not to search
-            //         processHtmlClass: 'tex2jax_process',  //  class that marks tags that should be searched
-            //         compileError: function (doc, math, err) { doc.compileError(math, err) },
-            //         typesetError: function (doc, math, err) { doc.typesetError(math, err) },
-            //         // renderActions: { ...}
-            //     }
-            // };
-            /*
-            $.ajax({
-                    url: "/getDescription",
-                    type: "get",
-                    data: { probNum: "<%=probNum%>" },
-                    success: (data) => { document.querySelector("#jax").innerHTML = data; MathJax.Hub.Configured(); }
-                });
-
-        document.querySelector('#submit').addEventListener("click", ()=>
+            document.querySelector('#add').addEventListener('click', ()=>
             {
-                // document.querySelector("#result").innerHTML = '<div class="badge bg-warning text-wrap" style="width: 6rem;"> wait please... </div>';
-                let rr = document.querySelector("#result");
-                rr.innerHTML = `<div id="result" type="button" class="right badge bg-warning text-wrap" style="width: 11rem;height: 2.9rem;font-size: 1.3rem; border-radius: 2px; border: 2px transparent; vertical-align: middle; display: table-cell;box-shadow: 0px 1px 2px 0 rgb(0 0 0 / 20%);padding: 0;text-align: center;
-                                line-height: 2.9rem;
-                            "> wait...  </div>`;
+                // let title = document.querySelector('#input-title').value;
+                // let description = document.querySelector('#input-description').value;
+                // let area = document.querySelector('#input-area').value;
+                // let rank = document.querySelector('#input-rank').value;
+                // let answer = document.querySelector('#input-answer').value;
+                let input = {
+                    input_title: "#input-title",
+                    input_description: "#input-description",
+                    input_area: "#input-area",
+                    input_rank: "#input-rank",
+                    input_answer: "#input-answer",
+                };
+
+                //---------여기서부터 eventListener에 들어갈 함수 내용
+                let p_title = document.querySelector(input.input_title);
+                let p_description = document.querySelector(input.input_description);
+                let p_area = document.querySelector(input.input_area);
+                let p_rank = document.querySelector(input.input_rank);
+                let p_answer = document.querySelector(input.input_answer);
+
                 $.ajax({
-                    url: "/submitAnswer", 
+                    url: "/problemMakingData",
                     type: "post",
-                    data: {answer: document.querySelector("#answer").value, probNum: `<%=probNum%>`},
-                    success:(data)=>
+                    data:{
+                        title:p_title.value,
+                        description: p_description.value,
+                        area: p_area.value,
+                        rank: p_rank.value,
+                        answer: p_answer.value
+                    },
+                    success: (data)=>
                     {
-                        // console.log(data);
-                        let x = document.querySelector("#result");
-                        if (data === "correct")
+                        if (data === "success!")
                         {
-                            // x.innerHTML = '<div class="badge bg-primary text-wrap" style="width: 6rem;"> Success! </div>';
-                            x.innerHTML = `<div id="result" type="button" class="right badge bg-success text-wrap" style="width: 11rem;height: 2.9rem;font-size: 1.3rem; border-radius: 2px; border: 2px transparent; vertical-align: middle; display: table-cell;box-shadow: 0px 1px 2px 0 rgb(0 0 0 / 20%);padding: 0;text-align: center;
-                                line-height: 2.9rem;
-                            "> Success!  </div>`;
+                            p_title.value = "";
+                            p_description.value = "";
+                            p_area.value = "";
+                            p_rank.value = "";
+                            p_answer.value = "";
                         }
-                        else
-                        {
-                            // x.innerHTML = '<div class="badge bg-danger text-wrap" style="width: 6rem;"> Wrong! </div>';
-                            x.innerHTML = `<div id="result" type="button" class="right badge bg-danger text-wrap" style="width: 11rem;height: 2.9rem;font-size: 1.3rem; border-radius: 2px; border: 2px transparent; vertical-align: middle; display: table-cell;box-shadow: 0px 1px 2px 0 rgb(0 0 0 / 20%);padding: 0;text-align: center;
-                                line-height: 2.9rem;
-                            "> Wrong!  </div>`;
-                        }
+                        alert(data);
                     }
                 });
-            });*/
+            });
         </script>
     </body>
 </html>
