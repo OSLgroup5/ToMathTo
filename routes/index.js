@@ -29,7 +29,6 @@ router.post('/login', (req, res, next) => {
     console.log(req.body.id);
     console.log(req.body.pw);
     if (req.body.id in idSet && idSet[req.body.id].password === req.body.pw) {
-
         req.session.user_id = req.body.id;
         req.session.logined = true;
         // req.session.regenerate(()=>
@@ -46,6 +45,17 @@ router.post('/login', (req, res, next) => {
         res.write('<script>alert("incorrect id or pw")</script>');
         res.write("<script>window.location=\"/page-login.html\"</script>");
         // res.send("bad");
+    }
+});
+router.get('/page-profile', (req, res, next)=>
+{
+    if (!req.session.logined)
+    {
+        res.redirect('page-login.html');
+    }
+    else
+    {
+        res.render('page-profile.ejs', {session:req.session});
     }
 });
 router.get('/login', (req, res, next)=>
@@ -179,6 +189,11 @@ router.get('/getProblemList', (req, res, next) => {
     // }
 
     // console.log("getProbList!!!!");
+    let cnt = 987654321;
+    if (!(typeof req.query.cnt == 'undefined')) cnt = req.query.cnt;
+    // console.log(req.body);
+    // console.log(req.query);
+    let nowcnt = 0;
     let sending = {};
     for (x in probSet) {
         let can = true;
@@ -194,7 +209,11 @@ router.get('/getProblemList', (req, res, next) => {
             sending[x] = probSet[x];
             if (!req.session.logined) sending[x].status = -1;
             else sending[x].status = is_solved(req.session.user_id, x);
+
+            nowcnt += 1;
+            if (nowcnt >= cnt) break;
         }
+
     }
     res.send(sending);
 });

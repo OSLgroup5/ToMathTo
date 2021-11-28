@@ -1,5 +1,7 @@
 # ToMathTo ![ToMathTo](thumbnail.png)
 
+![ToMathToScreen](capture.png)
+
 [whenever you want, you can make Feature Requests](https://github.com/OSLgroup5/ToMathTo/issues)
 
 ## About this Project
