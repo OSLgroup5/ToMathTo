@@ -13,8 +13,10 @@
     "leesj": {
         "password": "leesj"
     },
-    "hello@naver.com":
-    {
-        "password":"hello"
+    "hello@naver.com": {
+        "password": "hello"
+    },
+    "naver": {
+        "password": "naver"
     }
 }

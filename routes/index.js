@@ -288,6 +288,12 @@ router.post('/registerInfo', (req, res, next) => {
         res.write("<script>history.back()</script>");
         return;
     }
+    else if (!id || !pw)
+    {
+        res.write("<script>alert('empty id or password is not allowed!')</script>");
+        res.write("<script>history.back()</script>");
+        return;
+    }
     else {
         // console.log(id);
         // console.log(pw);
@@ -295,7 +301,7 @@ router.post('/registerInfo', (req, res, next) => {
         idSet[id].password = pw;
         // console.log("check");
         // res.write("<script>alert('register complete!')</script>");
-        res.send('<script type="text/javascript">alert("register complete!");location.href="/";</script>');
+        res.send('<script type="text/javascript">alert("register complete!");location.href="/page-login.html";</script>');
         // res.redirect('/');
         // res.send('<script type="text/javascript">location.href="/"</script>');
         fs.writeFileSync("user.json", JSON.stringify(idSet));
