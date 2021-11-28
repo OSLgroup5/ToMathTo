@@ -1,4 +1,4 @@
-# ToMathTo
+# ToMathTo ![ToMathTo](thumbnail.png)
 
 [whenever you want, you can make Feature Requests](https://github.com/OSLgroup5/ToMathTo/issues)
 
